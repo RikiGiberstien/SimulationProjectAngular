@@ -1,0 +1,17 @@
+<section class="packages-section">
+    <div class="packages-title">פרוט סוגי ההדמיות</div>
+    <div class="packages-list">
+        <div class="package-card">
+         @for(p of srv.list2$ | async ; track p; )
+        {
+        <div class="customer-card">
+           <p>מ"ס חבילה:{{p.IllustrationViewPointId}}</p>
+            <p>זוית ההדמיה:{{p.Description}}</p>
+            <p>תיאור:{{p.Price}}</p>
+             <button class="package-btn" >להזמנה</button>
+        </div> 
+       
+        }
+ </div>
+    </div>
+</section>

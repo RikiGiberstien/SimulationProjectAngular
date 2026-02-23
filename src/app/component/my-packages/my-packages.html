@@ -1,0 +1,16 @@
+<section class="packages-section">
+    <div class="packages-title">בחרו את חבילת ההדמיה שמתאימה לכם</div>
+    <div class="packages-list">
+        <div class="package-card">
+         @for(p of srv.list1$ | async;track p; )
+        {
+        <div class="customer-card">
+           <p>מ"ס חבילה:{{p.dealId}}</p>
+            <p>זוית ההדמיה:{{p.ViewPointId}}</p>
+            <p>תיאור:{{p.dealDescription}}</p>
+             <!-- <button class="package-btn" (click)="mypackages()">התחל עכשיו</button> -->
+        </div> 
+       }
+ </div>
+    </div>
+</section>

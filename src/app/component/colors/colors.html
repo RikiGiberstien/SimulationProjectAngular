@@ -1,0 +1,17 @@
+<!-- <input type="color" [(ngModel)]="myColor" (change)="saveColor()"> -->
+<select  [(ngModel)]="myColor" (change)="saveColor()">
+    <option>red</option>
+    <option>pink</option>
+    <option>yellow</option>
+    <option>black</option>
+    <option>blue</option>
+    <option>Green</option>
+</select>
+
+<div id="circle" [ngStyle]="{'background-color':myColor}"> </div>
+
+@if(isTheArrFull){
+    <div>!הינך נמצא כבר במערך</div>
+}
+
+

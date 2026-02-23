@@ -1,0 +1,30 @@
+<div class="landing">
+    <header class="landing-header"></header>
+
+    <div class="logo"> <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
+    </div>
+    <div class="auth-form"> 
+        @for(l of srv.list$ | async;track l;let ind=$index )
+        {
+        
+       
+        @if(l.customersId!=myCust.customersId || (!arr[ind]|| arr[ind]==null)){
+        <div class="customer-card">
+             
+            <p>ת"ז:{{l.customersId}}</p>
+            <p>שם:{{l.compNameCustName}}</p>
+            <p>מייל:{{l.mail}}</p>
+            <p>פלאפון:{{l.phone}}</p>
+            <a (click)="update(l,ind)">Update</a>
+        </div>
+        }
+       @if(l.customersId==myCust.customersId && arr[ind]){
+         <app-update-customer [customer]="myCust" (closeEdit)="isEdit=false;arr[ind]=false"></app-update-customer>
+       }
+    }
+        
+        
+
+    </div>
+
+</div>

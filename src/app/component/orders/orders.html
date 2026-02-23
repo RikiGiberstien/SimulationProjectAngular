@@ -1,0 +1,16 @@
+<div class="landing">
+    <header class="landing-header"></header>
+    <div class="logo"> <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
+    </div>
+    <div class="packages-title"> ההזמנות שלך</div>
+
+    <div class="auth-form">
+        @for(d of srv.list3$ | async;track d ; ){
+        <!-- @if(myCust.CustId==d.CustId){ -->
+        <div class="customer-card">
+            <p>קוד הזמנה:{{d.OrderId}}</p>
+            <p>תאריך ההזמנה:{{d.OrderDate}}</p>
+        </div>
+        <!-- } -->
+    }
+    </div>

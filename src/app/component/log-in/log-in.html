@@ -1,0 +1,53 @@
+<!-- <div class="login-container">
+    <div class="login-box">
+        <h2>כניסה למערכת</h2>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="form-group"> <label for="name">שם</label>
+                <input id="name" type="text" name="name" [(ngModel)]="model.name" required />
+            </div>
+            <div class="form-group"> <label for="email">אימייל</label>
+                <input id="email" type="email" name="email" [(ngModel)]="model.email" required />
+            </div>
+
+            <button type="submit" [disabled]="loginForm.invalid"  (click) ="ok(true)"> התחבר </button>
+            <p class="register-link"> אין לך משתמש?
+                <a >עבור להרשמה</a>
+            </p>
+        </form>
+    </div>
+</div> -->
+<!-- (click)="goToRegister()" -->
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>ברוך הבא חזרה</h1>
+            <p>התחבר כדי להמשיך לניהול ההדמיות שלך</p>
+        </div>
+        <div class="auth-form">
+             <div class="form-group"> <label for="name">שם</label>
+                <input id="name" type="text" name="name" [(ngModel)]="model.compNameCustName" required />
+            </div>
+            <div class="form-group"> <label for="email">אימייל</label> <input id="email" type="text" [(ngModel)]="model.mail"
+                    placeholder="name@example.com" required/> </div>
+           
+            <div class="form-footer"> <button type="button" class="btn gold" (click)="ok()"> כניסה למערכת </button>
+                <button type="button" class="btn ghost" (click)="homepage()"> חזרה לדף הבית </button> </div>
+            <p class="switch-text"> אין לך משתמש? <span (click)="toregister()">עבור להרשמה</span> </p>
+            =
+            </div>
+    </div>
+    <div class="auth-side">
+        <div class="auth-highlight">
+            <h2>ניהול חכם של פרויקטי הדמיה</h2>
+            <p> גישה מהירה לכל הפרויקטים, הלקוחות והקבצים שלך – במקום אחד, בעיצוב נקי ואלגנטי. </p>
+            <ul>
+                <li>מעקב אחרי סטטוס כל הדמיה</li>
+                <li>שיתוף קבצים עם לקוחות</li>
+                <li>התראות על דדליינים קרובים</li>
+            </ul>
+        </div>
+        <div class="auth-orb orb-gold"></div>
+        <div class="auth-orb orb-blue"></div>
+    </div>
+</div>
+<!-- <router-outlet></router-outlet>  -->

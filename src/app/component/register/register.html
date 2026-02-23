@@ -1,0 +1,47 @@
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>יצירת חשבון חדש</h1>
+            <p>הצטרף למערכת הניהול של משרד ההדמיות שלך</p>
+        </div>
+        <div  class="auth-form" >
+            <div class="form-group"> <label for="name">שם מלא</label> <input id="name" type="text"  [(ngModel)]="model.compNameCustName" required
+                    placeholder="שם ושם משפחה" /> </div>
+            <div class="form-group"> <label for="email">אימייל</label> <input id="email" type="email" [(ngModel)]="model.mail" required
+                    placeholder="name@example.com" /> </div>
+            <div class="form-group"> <label for="studio">טלפון</label> <input id="phone" type="text" [(ngModel)]="model.phone" required
+                    placeholder="Studio Render" /> </div>
+                    <div class="form-group"><input id="name" type="checkbox" [(ngModel)]="isFactory"/><label for="studio">האם יש לך מפעל?</label></div>
+            @if(isFactory) { <div class="form-group"> <label for="studio">סוג לקוח</label>
+                 <select>
+                @for(l of listTypes;track l;){
+                <option  [(ngModel)]="model.customerType" value="l.customerTypeId">{{l.customerType}}</option>
+            }
+            </select> </div> 
+                    <div class="form-group"> <label for="studio">שם האיש קשר</label> <input id="connectPerson" type="text" [(ngModel)]="model.connectPerson"
+                    placeholder="Studio Render" /> </div>    } 
+            <!-- <select>
+                @for(l of listTypes;track l;){
+                <option>{{l.customerType}}</option>
+            }
+            </select>       -->
+            <div class="form-footer"> <button  type="button" class="btn gold" (click)="register()"> צור חשבון </button>
+                
+                <button type="button"  class="btn ghost" (click)="homepage()"> חזרה לדף הבית </button> </div>
+            <p class="switch-text"> כבר יש לך משתמש? <span (click)="tologin()">עבור לכניסה</span> </p>
+            </div>
+    </div>
+    <div class="auth-side">
+        <div class="auth-highlight">
+            <h2>התחל לנהל את כל ההדמיות שלך</h2>
+            <p> יצירת חשבון מאפשרת לך לעקוב אחרי כל הפרויקטים, הלקוחות והקבצים, בצורה מסודרת ונוחה. </p>
+            <ul>
+                <li>משתמשים מרובים לצוות המשרד</li>
+                <li>תיעוד גרסאות לכל הדמיה</li>
+                <li>גישה מאובטחת מכל מקום</li>
+            </ul>
+        </div>
+        <div class="auth-orb orb-gold"></div>
+        <div class="auth-orb orb-blue"></div>
+    </div>
+</div>
