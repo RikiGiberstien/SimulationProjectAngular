@@ -1,0 +1,217 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    direction: rtl;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.landing {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #1f2933 0, #020308 40%, #000000 100%);
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(16px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #facc15 0, #f59e0b 40%, #92400e 100%);
+    box-shadow: 0 2px 8px #0006;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  color: #facc15;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.nav:hover {
+  background: rgba(250, 204, 21, 0.35);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-links a {
+  color: #f9fafb;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #facc15;
+}
+
+.packages-section {
+    width: 100%;
+    height: 750px;
+    padding: 32px 24px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #000a;
+}
+
+.packages-title {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 36px;
+    color: #fde68a;
+    font-weight: bold;
+    text-shadow: 0 2px 12px #0008;
+}
+
+.packages-list {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.package-card {
+    background: linear-gradient(135deg, #23272f 70%, #111 100%);
+    border: 2px solid #fde68a55;
+    border-radius: 14px;
+    padding: 32px 20px;
+    width: 100%;
+    height: 700px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 2px 16px #0007;
+}
+
+.customer-card {
+    background: linear-gradient(135deg, #23272f 70%, #111 100%);
+    border: 2px solid #fde68a55;
+    border-radius: 14px;
+    padding: 32px 20px;
+    width: 400px;
+    height: 400px;
+    color: #ffffff;
+    margin-left: 80px;
+    margin-right: 200px;
+    margin-top: 50px;
+    padding-top: 60px;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    box-shadow: 0 2px 16px #0007;
+}
+
+.package-card.featured {
+    border-color: #facc15;
+    background: linear-gradient(135deg, #3b2f0b 70%, #fde68a22 100%);
+    box-shadow: 0 4px 32px #facc1522, 0 2px 16px #0007;
+}
+
+.package-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: #fde68a;
+    letter-spacing: 0.5px;
+}
+
+.package-price {
+    font-size: 2em;
+    color: #facc15;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.package-price span {
+    font-size: 0.6em;
+    color: #000000;
+    margin-right: 2px;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px 0;
+    color: #000000;
+    font-size: 1em;
+    text-align: right;
+}
+
+.package-features li {
+    margin-bottom: 10px;
+    padding-right: 16px;
+    position: relative;
+}
+
+.package-features li:before {
+    content: "✔";
+    color: #facc15;
+    position: absolute;
+    right: 0;
+    font-size: 1em;
+}
+
+.package-btn {
+    background: linear-gradient(90deg, #facc15 60%, #f59e0b 100%);
+    color: #23272f;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 12px #facc1533;
+    transition: background 0.2s, color 0.2s;
+}
+
+.package-btn:hover {
+    background: linear-gradient(90deg, #fde68a 60%, #facc15 100%);
+    color: #92400e;
+}
+
+@media (max-width: 900px) {
+    .packages-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .package-card {
+        width: 90%;
+    }
+}

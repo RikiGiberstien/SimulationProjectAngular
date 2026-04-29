@@ -7,14 +7,29 @@ import { Customers } from './component/customers/customers';
 import { MyPackages } from './component/my-packages/my-packages';
 import { Illustration } from './component/illustration/illustration';
 import { Orders } from './component/orders/orders';
+import { Recommendations } from './component/recommendations/recommendations';
+import { Vieworders } from './component/vieworders/vieworders';
+import { AddPackage } from './component/add-package/add-package';
+import { PictureDetails } from './component/packages/picture-details/picture-details';
+import { Wellcome } from './component/wellcome/wellcome';
 
 export const routes: Routes = [
 {path:'log-in',component:LogIn},
 {path:'register',component:Register},
-{path:'',component:HOmePage},
+{path:'homePage',component:HOmePage},
 {path:'packages',component:Packages},
 {path:'customers',component:Customers},
 {path:'myPackages',component:MyPackages},
 {path:'illustration',component:Illustration},
-{path:'orders',component:Orders}   
+{path:'orders/:dealId',component:Orders}, 
+{path:'recommendations',component:Recommendations},
+{path:'recommendations',component:Recommendations},
+{path:'vieworders',component:Vieworders},
+{path:'addPackage',component:AddPackage},
+{path:'pictureDetails',component:PictureDetails},
+{ path: '', component: Wellcome },
+
+
+
+
 ];

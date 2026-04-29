@@ -1,16 +1,41 @@
-<section class="packages-section">
-    <div class="packages-title">בחרו את חבילת ההדמיה שמתאימה לכם</div>
-    <div class="packages-list">
-        <div class="package-card">
-         @for(p of srv.list1$ | async;track p; )
-        {
-        <div class="customer-card">
-           <p>מ"ס חבילה:{{p.dealId}}</p>
-            <p>זוית ההדמיה:{{p.ViewPointId}}</p>
-            <p>תיאור:{{p.dealDescription}}</p>
-             <!-- <button class="package-btn" (click)="mypackages()">התחל עכשיו</button> -->
-        </div> 
-       }
- </div>
+<!-- צריך לעשות אם האדם הוא מנהל כלומר הוא צריךלראות את החבילות כולל אפשרות של עדכון חבילה וגם הוספת חבילה ואם הוא לא מנהל הוא צריך לראות בלי האפשריות האלו    -->
+<!-- זה לאדם  מנהל -->
+
+@if(srv.curentcustomer.mail=="meair@gmail.com")
+
+{<button (click)="addpackage()">להוספת חבילה</button>
+<div class="auth-form">
+  @for(l of srv.list1$ | async;track l ;let ind=$index)
+  {
+  @if(l.dealId!=mypack.dealId || (!arr[ind]|| arr[ind]==null)){
+  <div class="customer-card">
+    <p>מס' חבילה:{{l.dealId}}</p>
+    <p>תיאור:{{l.dealDescription}}</p>
+
+    <a (click)="update(l,ind)">Update</a>
+  </div>
+  }
+  @if(l.dealId==mypack.dealId && arr[ind]){
+    <app-updatepackage [deal]="mypack" (closeEdit)="isEdit1=false;arr[ind]=false"></app-updatepackage>
+    } 
+  }
+</div>
+}
+@else()
+{
+<div class="packages-section">
+  <div class="packages-title">בחרו את חבילת ההדמיה שמתאימה לכם</div>
+  <div class="packages-list">
+    <div class="package-card">
+      @for(p of srv.list1$ | async;track p; )
+      {
+      <div class="customer-card">
+        <p>מס' חבילה:{{p.dealId}}</p>
+        <p>תיאור:{{p.dealDescription}}</p>
+        <button class="package-btn" (click)="personalerea(p.dealId)" [disabled]="disableOrderButton">למילוי טופס הזמנה</button>
+      </div>
+      }
     </div>
-</section>
+  </div>
+  </div>
+}

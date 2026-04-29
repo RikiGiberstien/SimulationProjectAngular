@@ -1,0 +1,28 @@
+
+<section class="packages-section">
+    <div class="packages-title">המלצות מאנשים מרוצים</div>
+    <div class="packages-list">
+         <nav class="nav-links">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a>אודות</a>
+       <a (click)="mypac()">חבילות</a>
+       <!-- <a (click)="personalerea()">האזור האישי</a>  -->
+       <a (click)="recomms()">ממליצים</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+
+      </nav>
+        <div class="package-card">
+            <div class="customer-card">
+                @for (i of srv.list4$ | async; track $index) {
+                <p>תיאור: {{ i.recDescription }}</p>
+                <p>לקוח ממליץ: {{ i.customerName }}</p>
+                <p>ההדמיה: {{ i.dealName }}</p>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</section>

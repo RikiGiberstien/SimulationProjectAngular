@@ -3,14 +3,52 @@
     <div class="logo"> <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
     </div>
     <div class="packages-title"> ההזמנות שלך</div>
-
-    <div class="auth-form">
-        @for(d of srv.list3$ | async;track d ; ){
-        <!-- @if(myCust.CustId==d.CustId){ -->
-        <div class="customer-card">
-            <p>קוד הזמנה:{{d.OrderId}}</p>
-            <p>תאריך ההזמנה:{{d.OrderDate}}</p>
+ 
+    
+  
+    <div class="customer-card">
+       <p>שלום ל{{srv.curentcustomer.compNameCustName}}</p>
+        
+        <div class="form-group">
+            <div class="label-form">תאריך סיום הזמנה</div><label for="OrderFinishDate"> </label> <input
+                id="OrderFinishDate" type="date" [(ngModel)]="myorder.orderFinishDate" required
+                placeholder="תאריך סיום הזמנה" />
         </div>
-        <!-- } -->
-    }
-    </div>
+        <div class="form-group">
+            <div class="label-form">כמות מטר רבוע:</div> <label for="meters"> </label> <input id="meters" type="number"
+                [(ngModel)]="myorder.meters" required placeholder="כמות מטר רבוע" />
+        </div>
+        <div class="form-group">
+            <div class="label-form"> התקציב שלך...:</div><label for="budget"> </label> <input id="budget" type="number"
+                [(ngModel)]="myorder.budget" required placeholder="התקציב שלך..." />
+        </div>
+       <!--   <select>
+                    @for(l of listTypes;track l;){
+                    <option [(ngModel)]="model.customerType" value="l.customerTypeId">{{l.customerType}}</option>
+                    }
+                </select> -->
+
+     <select [(ngModel)]="myorder.viewPointId" name="viewPoint">
+  @for (s of listTypesOfillustration; track s.illustrationViewPointId) {
+    <option [value]="s.illustrationViewPointId">
+      {{ s.description }}
+    </option>
+  }
+</select></div>
+  <!--  } -->
+         <div class="form-footer"> <button type="button" class="btn gold" (click)="save()">שמור</button>
+
+   
+  
+
+
+    <!-- </div> -->
+    <!-- } -->
+</div>
+
+
+<!-- <p>קוד הזמנה:{{myorder.orderId}}</p>-->
+        <!-- <p>שם חבילה:{{myorder.dealId}}</p>  -->
+          <!-- <p>מצב הזמנה:{{d.status}}</p> -->
+        <!-- <p>תאריך ההזמנה:{{myorder.orderDate}}</p> -->
+<!-- <div class="auth-form" *ngFor="let d of srv.list3$ | async; trackBy: trackByOrderId"> -->

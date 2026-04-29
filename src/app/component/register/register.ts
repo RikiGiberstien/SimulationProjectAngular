@@ -20,7 +20,7 @@ export class Register  {
   srv: Service = inject(Service)
   listTypes: CustomertypeModule[] = []
 
-  homepage() { this.router.navigate(['/']); }
+  homepage() { this.router.navigate(['/homePage']); }
   tologin() { this.router.navigate(['/log-in']); }
   //פונק הטענה
   ngOnInit() {
@@ -39,8 +39,8 @@ export class Register  {
       this.model.customerType=307
     this.srv.CreateCustomer(this.model).subscribe(res => {
       if (res) {
-        this.srv.curentcustomer = this.model;
-         this.router.navigate(['/packages'])
+     this.srv.curentcustomer = this.model;
+      this.router.navigate(['/packages']);
       }
       else {
         alert("לקוח קיים , הנך מועבר לכניסה")

@@ -1,17 +1,34 @@
-<section class="packages-section">
+<!--the binas <section class="packages-section">
     <div class="packages-title">פרוט סוגי ההדמיות</div>
     <div class="packages-list">
-        <div class="package-card">
-         @for(p of srv.list2$ | async ; track p; )
-        {
-        <div class="customer-card">
-           <p>מ"ס חבילה:{{p.IllustrationViewPointId}}</p>
-            <p>זוית ההדמיה:{{p.Description}}</p>
-            <p>תיאור:{{p.Price}}</p>
-             <button class="package-btn" >להזמנה</button>
-        </div> 
-       
-        }
+        <div class="package-card" *ngFor="let i of srv.list2$ | async; trackBy: trackByIllustrationId() ">
+        <div class="customer-card" >
+           <p>מס' חבילה:{{i.IllustrationViewPointId}}</p>
+            <p>זוית ההדמיה:{{i.Description}}</p>
+            <p>תיאור:{{i.Price}}</p>
+             <button class="package-btn" (click)="personalerea()">להזמנה</button>
+        </div>     
  </div>
+    </div>
+</section> -->
+<section class="packages-section">
+    <div class="packages-title">בחרו את חבילת ההדמיה שמתאימה לכם</div>
+    <div class="packages-list">
+        <div class="package-card">
+
+            <div class="customer-card">
+                @for (i of srv.list2$ | async; track $index) {
+                <button>תיאור: {{ i.description }}</button>
+
+                }
+
+
+                <input type="text" placeholder=" תאר לנו במה מדובר...">
+                
+                <button class="package-btn" (click)="personalerea()">להזמנה</button>
+            </div>
+        </div>
+
+
     </div>
 </section>

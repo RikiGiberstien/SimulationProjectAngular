@@ -1,0 +1,53 @@
+ <nav>
+    <a>פרויקטים</a>
+    <a>הדמיות חוץ</a>
+    <a>פתח תקווה</a>
+    <a>אודות</a>
+    <a class="active">צרו קשר</a>
+
+  </nav>
+  <div class="page">
+<header class="header">
+  <div class="logo">
+
+  </div>
+  <!-- <nav>
+    <a>פרויקטים</a>
+    <a>הדמיות חוץ</a>
+    <a>פתח תקווה</a>
+    <a>אודות</a>
+    <a class="active">צרו קשר</a>
+
+  </nav> -->
+
+</header>
+<section class="slider">
+  <!-- <button class="nav left" (click)="prev()">></button>
+  
+  <div class="image-container">
+    <img [class.fade]="true" [src]="images[currentIndex]"/>
+
+  </div>
+  <button class="nav rigth" (click)="next()"><</button> -->
+  <button class="nav left" (click)="prev()">&#8250;</button>
+
+<div class="image-container">
+  <img [class.fade]="true" [src]="images[currentIndex]" />
+</div>
+
+<button class="nav right" (click)="next()">&#8249;</button>
+</section>
+<section class="thumbnails">
+   @for( i of images;track i;){
+   
+<div class="thumb"  (click)="select($index)" > 
+    <img [src]="images[$index]"> 
+  </div>  
+   }
+   
+</section> 
+</div>
+<!-- -------------------------------------------------- -->
+
+
+

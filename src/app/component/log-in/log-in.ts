@@ -12,15 +12,11 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
   styleUrl: './log-in.scss'
 })
 export class LogIn {
-
-  
-  onSubmit() { console.log('login data:', this.model)};
-
+onSubmit() { console.log('login data:', this.model)};
 // @Input()
 // id:number=0;
 // @Output()
-  model :CustomerModule=new CustomerModule()
-
+model :CustomerModule=new CustomerModule()
 closesearch:EventEmitter<boolean>=new EventEmitter<boolean>()
 srv:Service=inject(Service) 
 router=inject(Router)
@@ -28,14 +24,11 @@ activeRoute=inject(ActivatedRoute);
 // ngOnInit(){
 //     console.log('Getbyid init, id =', this.id);
 //   }
-
 toregister(){ this.router.navigate(['/register']); } 
-homepage() { this.router.navigate(['/']); }  
-
+homepage() { this.router.navigate(['/homePage']); }  
 ok() { 
   console.log(this.model.mail)
   if(this.model.mail=="meair@gmail.com"){
-    
   }
   // if (bool) { this.srv.GetByMail(this.model.mail).subscribe(
   //   (resu: CustomerModule) => { 
@@ -58,12 +51,8 @@ this.srv.GetByMail(this.model.mail).subscribe(res=>
   else{
     this.toregister()
   }
-
-
 }
  )
 }
-
-
 }
 

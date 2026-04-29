@@ -6,6 +6,5 @@ import { CommonModule } from '@angular/common';
 })
 export class DealsModule {
     dealId: number = 0
-    ViewPointId: number = 0
     dealDescription: string = ''
 }

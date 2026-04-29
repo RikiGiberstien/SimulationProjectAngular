@@ -24,7 +24,7 @@ export class UpdateCustomer {
   ok(bool: boolean) {
     if (bool) {
       this.srv.updateCustomers(this.customer).subscribe(res => { 
-       this.srv.refresh() 
+       this.srv.refreshCustomers() 
       
       }
       )

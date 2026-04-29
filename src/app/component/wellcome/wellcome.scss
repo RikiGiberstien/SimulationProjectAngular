@@ -1,0 +1,116 @@
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('/studio.png') center no-repeat;
+  background-size: contain; /* מציג את כל התמונה */
+  background-color: #000;   /* מילוי רקע שחור מסביב */
+  z-index: 0;
+}
+
+.bg-reflection {
+  position: absolute;
+  inset: 0;
+  background: url('/studio.png') center no-repeat;
+  background-size: contain;
+  transform: scaleY(-1);
+  opacity: 0.2;
+  filter: blur(6px);
+  z-index: 0;
+}
+.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+// /* תמונה כרקע מלא */
+// .bg-image {
+//   position: absolute;
+//   inset: 0;
+//   background: url('/studio.png') center/cover no-repeat;
+//   z-index: 0;
+//   transform: scale(1.05);
+// }
+
+/* שכבת כהות */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+  z-index: 1;
+}
+
+/* תוכן */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d4af37;
+}
+
+/* כותרת */
+.title {
+  font-size: 72px;
+  text-shadow: 
+    0 0 10px #000,
+    0 0 20px #d4af37,
+    0 0 40px #d4af37;
+  margin-bottom: 60px;
+}
+
+/* כפתור */
+.enter-btn {
+  font-size: 22px;
+  padding: 16px 50px;
+  border: 2px solid #d4af37;
+  background: rgba(0,0,0,0.6);
+  color: #d4af37;
+  cursor: pointer;
+  animation: blink 1s infinite;
+}
+
+// @keyframes blink {
+//   0%,100% { opacity: 1; }
+//   50% { opacity: 0.4; }
+// }
+
+@keyframes goldBlink {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 10px #d4af37;
+    filter: drop-shadow(0 0 5px #d4af37);
+  }
+
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 25px #d4af37;
+    filter: drop-shadow(0 0 15px #ffd700);
+  }
+
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #d4af37;
+    filter: drop-shadow(0 0 5px #d4af37);
+  }
+}
+
+/* אנימציית מעבר */
+.container.exit {
+  animation: cinematicExit 1.4s forwards;
+}
+
+@keyframes cinematicExit {
+  0% { transform: scale(1); filter: blur(0); }
+  50% { transform: scale(1.2); }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    filter: blur(12px);
+  }
+}

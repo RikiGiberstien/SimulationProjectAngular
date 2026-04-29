@@ -1,0 +1,47 @@
+<div class="landing">
+  <header class="landing-header"></header>
+
+  <div class="logo">
+    <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
+  </div>
+  <a>לצפייה בלקוחות המזמינים</a>
+
+  <div class="auth-form">
+ <div class="customer-card"> 
+    @for(l of srv.list3$ | async;track l;let ind=$index )
+    {
+      <p>{{l.custName}} היקר/ה</p>
+  <p>סוג החבילה: {{l.dealName}}</p>
+      <p>סיום בתאריך: {{l.orderFinishDate}}</p>
+      <button (click)="updateStatus(true);myorder=l">מצב ההזמנה כרגע </button>
+      @if(isEdit&&myorder.orderId==l.orderId){
+        <!-- <input type="text" [(ngModel)]="myorder.status" > -->
+          <button (click)="updateStatus(false)">ok</button>
+<div id="statusStars">
+          <span  [style.color]="'gold'">*</span>
+        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+          <span (click)="setStars('finish')" [style.color]="myorder.status.trim() =='finish'? 'gold' : 'gray'">*</span>
+        </div>
+  }
+          <!-- =========================================== is stars-->
+          <!-- <div class="stars"> -->
+          <!-- <span (click)="setStars(myorder,2)" [style.color]="myorder.stars >=2?'gold' : 'gray'">##</span> -->
+          <!-- <span (click)="setStars(order,3)" [style.color]="order.stars >=3?'gold' : 'gray'">⭐⭐⭐</span>
+          <span (click)="setStars(order,4)" [style.color]="order.stars >=4?'gold' : 'gray'">⭐⭐⭐⭐</span>
+          <span (click)="setStars(order,5)" [style.color]="order.stars >=1?'gold' : 'gray'">⭐⭐⭐⭐⭐</span> -->
+          <!-- </div> -->
+          <!-- =============================================== -->
+      <p>שטח במ"ר {{l.meters}}</p>
+      <p>התקציב: {{l.budget}}</p>
+      <p>הוזמן בתאריך {{l.orderDate}}</p>
+      <p>מזוית: {{l.viewPointId}}</p>}
+</div>     
+  </div> 
+   </div> 
+    <!-- @if(l.orderId!=myorder.orderId || (!arr[ind]|| arr[ind]==null)){
+  
+    }
+   -->
+
+

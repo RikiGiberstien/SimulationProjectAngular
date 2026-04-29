@@ -17,7 +17,7 @@ export class Customers {
   indd:number=-1
   arr:boolean[]=[]
   ngOnInit() {
-    this.srv.refresh()
+    this.srv.refreshCustomers()
   }
   
 

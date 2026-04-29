@@ -1,0 +1,35 @@
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>יצירת חבילה חדש</h1>
+        </div>
+        <div class="auth-form">
+            <div class="form-group"> <label for="name">קוד חבילה</label> <input id="name" type="text"
+                    [(ngModel)]="model.dealId" required placeholder="קוד בן 3 ספרות החל מ 230" /> </div>
+            <div class="form-group"> <label for="name">שם החבילה</label> <input id="na" type="text"
+                    [(ngModel)]="model.dealDescription" required placeholder="name@example.com" /> </div>
+
+                    <button (click)="addpackage()">אישור</button>
+            <!-- <select>
+                @for(l of listTypes;track l;){
+                <option>{{l.customerType}}</option>
+            }
+            </select>       -->
+           
+            
+        </div>
+    </div>
+    <div class="auth-side">
+        <div class="auth-highlight">
+            <h2>התחל לנהל את כל ההדמיות שלך</h2>
+            <p> יצירת חשבון מאפשרת לך לעקוב אחרי כל הפרויקטים, הלקוחות והקבצים, בצורה מסודרת ונוחה. </p>
+            <ul>
+                <li>משתמשים מרובים לצוות המשרד</li>
+                <li>תיעוד גרסאות לכל הדמיה</li>
+                <li>גישה מאובטחת מכל מקום</li>
+            </ul>
+        </div>
+        <div class="auth-orb orb-gold"></div>
+        <div class="auth-orb orb-blue"></div>
+    </div>
+</div>

@@ -9,13 +9,19 @@ import { UpdateCustomer } from './component/update-customer/update-customer';
 import { MyPackages } from './component/my-packages/my-packages';
 import { Illustration } from './component/illustration/illustration';
 import { Orders } from './component/orders/orders';
+import { Updatepackage } from './component/updatepackage/updatepackage';
+import { Recommendations } from './component/recommendations/recommendations';
+import { Vieworders } from './component/vieworders/vieworders';
+import { AddPackage } from './component/add-package/add-package';
+import { PictureDetails } from './component/packages/picture-details/picture-details';
+import { Wellcome } from './component/wellcome/wellcome';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterModule,Customers,LogIn,Register,HOmePage,Packages,UpdateCustomer,MyPackages,Illustration,Orders 
-
+  imports: [RouterOutlet, RouterModule, Customers, LogIn, Register, HOmePage, Packages, UpdateCustomer, MyPackages, Illustration,
+    Orders, Updatepackage, Recommendations, Vieworders, AddPackage,PictureDetails,Wellcome
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
@@ -23,5 +29,5 @@ import { Orders } from './component/orders/orders';
 export class App {
   protected readonly title = signal('blank-app');
 
-  
+
 }
