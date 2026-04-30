@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LogIn } from '../log-in/log-in';
+import { Service } from '../../services/service';
 
 
 @Component({
@@ -11,14 +12,18 @@ import { LogIn } from '../log-in/log-in';
   styleUrl: './home-page.scss'
 })
 export class HOmePage {
-router=inject(Router)
-activeRoute=inject(ActivatedRoute);
-login() { this.router.navigate(['/log-in']); } 
-register() { this.router.navigate(['/register']); } 
-packages() { this.router.navigate(['/packages']); } 
-
-// login(){
-//   this.router.navigate(["log-in"],{relativeTo:this.activeRoute})
-// }
+  srv: Service = inject(Service)
+  router = inject(Router)
+  activeRoute = inject(ActivatedRoute);
+  login() { this.router.navigate(['/log-in']); }
+  register() { this.router.navigate(['/register']); }
+  packages() { this.router.navigate(['/packages']); }
+  ngOnInit() {
+    // if (this.srv.curentcustomer.customersId == 0)
+    //   this.router.navigate(['/homePage'])
+  }
+  // login(){
+  //   this.router.navigate(["log-in"],{relativeTo:this.activeRoute})
+  // }
 
 }

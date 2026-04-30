@@ -6,7 +6,7 @@ import { Service } from '../../services/service';
 
 @Component({
   selector: 'app-recommendations',
-  imports: [Customers, RouterOutlet,AsyncPipe],
+  imports: [Customers, RouterOutlet, AsyncPipe],
   templateUrl: './recommendations.html',
   styleUrl: './recommendations.scss'
 })
@@ -17,6 +17,7 @@ export class Recommendations {
   packages() { this.router.navigate(['/packages']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
+  aboute() { this.router.navigate(['/about']); }
   // personalerea() {this.router.navigate(['/personalArea']); }
   recomms() {
     this.router.navigate(['/']);
@@ -24,9 +25,9 @@ export class Recommendations {
   vieworders() { this.router.navigate(['/vieworders']) }
 
 
-ngOnInit(){
-  this.srv.refreshRecommendations()
-  if(this.srv.curentcustomer.customersId==0)
-    this.router.navigate(['/homePage'])
-}
+  ngOnInit() {
+    this.srv.refreshRecommendations()
+    if (this.srv.curentcustomer.customersId == 0)
+      this.router.navigate(['/homePage'])
+  }
 }

@@ -1,56 +1,57 @@
-<div class="landing">
-  <!-- Header Placeholder -->
-  <header class="landing-header">
+<div class="about-page">
+
+  <header class="header">
     <div class="logo">
       <div class="logo-mark"></div>
-      <div class="logo-text">שם אתר / לוגו</div>
+      <div class="logo-text">SimuCraft Systems</div>
     </div>
-    <nav class="nav-links">
-      <a href="#">דף 1</a>
-      <a href="#">דף 2</a>
-      <a href="#">דף 3</a>
-    </nav>
-    <div class="header-actions">
-      <button class="btn ghost">כניסה</button>
-      <button class="btn gold big">הרשמה</button>
-    </div>
+
+    <nav class="nav">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+       <a (click)="mypac()">חבילות</a>
+       <a (click)="recomms()">ממליצים</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+
+      </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-text">
-      <h1>כותרת <span>טקסט מודגש</span></h1>
-      <p>
-        זהו אזור לדוגמה של טקסט. ניתן למלא כאן תוכן כללי עבור דף מידע או אודות.
-      </p>
-      <div class="hero-actions">
-        <button class="btn gold">פעולה ראשית</button>
-        <button class="btn outline">פעולה משנית</button>
-      </div>
-      <div class="hero-tags">
-        <span>תג 1</span>
-        <span>תג 2</span>
-        <span>תג 3</span>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="glass-card main-card">
-        <h3>כותרת כרטיס</h3>
-        <p>טקסט לדוגמה בכרטיס.</p>
-        <div class="progress">
-          <div class="progress-bar"></div>
-        </div>
-      </div>
-      <div class="glass-card small-card card-1">כרטיס קטן 1</div>
-      <div class="glass-card small-card card-2">כרטיס קטן 2</div>
-      <div class="orb orb-gold"></div>
-      <div class="orb orb-blue"></div>
-    </div>
+    <h1>מערכת הדמיות <span>תלת־מימד מתקדמת</span></h1>
+    <p>
+      חברת SimuCraft Systems פועלת מאז 2015 ומפתחת מערכות ניהול והדמיה תלת־מימדיות
+      מהמתקדמות בעולם, תוך שימוש בטכנולוגיות כמו Obit, WebGL ומנועי סימולציה בזמן אמת.
+    </p>
   </section>
 
-  <!-- Footer Placeholder -->
-  <footer class="landing-footer">
-    © 2026 דף טקסט לדוגמה | כל הזכויות שמורות
+  <section class="cards">
+
+    <div class="card">
+      <h2>🚀 מי אנחנו</h2>
+      <p>
+        צוות פיתוח המתמחה ביצירת מערכות הדמיה מורכבות לתעשייה, מחקר והדרכה.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ טכנולוגיות</h2>
+      <p>
+        Angular • WebGL • Obit Engine • Node.js • מערכות זמן אמת
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>📊 פעילות</h2>
+      <p>
+        מעל 120,000 משתמשים פעילים ומאות אלפי סימולציות ביום.
+      </p>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    © 2026 SimuCraft Systems | כל הזכויות שמורות
   </footer>
+
 </div>

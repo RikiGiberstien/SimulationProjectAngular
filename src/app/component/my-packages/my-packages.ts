@@ -24,7 +24,9 @@ export class MyPackages implements OnInit{
   arr:boolean[]=[]
  disableOrderButton: boolean = false;
   ngOnInit() {
-    this.srv.refreshDeals() 
+    this.srv.refreshDeals()
+     if(this.srv.curentcustomer.customersId==0)
+    this.router.navigate(['/homePage'])
   }
   // משתמש בוחר Guest → הכפתור מושבת
 // onGuestClick() {

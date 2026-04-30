@@ -8,19 +8,16 @@
       <a (click)="packages()">יציאה מהמערכת</a>
       @if(srv.curentcustomer.mail=="meair@gmail.com"){
       <a (click)="cust()">לקוחות</a> }
-      <a>אודות</a>
-       <a (click)="mypac()">חבילות</a>
-       <!-- <a (click)="personalerea()">האזור האישי</a>  -->
-       <a (click)="recomms()">ממליצים</a>
+      <a (click)="aboute()">אודות</a>
+      <a (click)="mypac()">חבילות</a>
       <a (click)="vieworders()">צפייה בנתונים</a>
-
-      </nav>
+    </nav>
   </header>
   <router-outlet></router-outlet>
   <main class="portfolio-main">
-    
+
     <h1>פרויקטים להתרשמות</h1>
-    <div class="projects-list">    <!-- 
+    <div class="projects-list"> <!-- 
          @for(s of srv.getallproject();track $index;let i = $index){
     <div class="customer-card">
              <p>{{s.title}}</p>
@@ -34,25 +31,25 @@
 </main>
 </div> -->
 
-  @for( i of projects;track i;){
-    <div>
-      <p>{{i.title}}</p>
-      <p>{{i.description}}</p>
-     <div class="image-container">
-  <img [class.fade]="true" [src]="i.image" />
-</div> 
- <button (click)="pictureDetails(1)">לפרטים נוספים</button>
+      @for( i of projects;track i;){
+      <div>
+        <p>{{i.title}}</p>
+        <p>{{i.description}}</p>
+        <div class="image-container">
+          <img [class.fade]="true" [src]="i.image" />
+        </div>
+        <button (click)="pictureDetails(1)">לפרטים נוספים</button>
 
-</div>
-}
-<!-- ---------------------------------------- -->
+      </div>
+      }
+      <!-- ---------------------------------------- -->
 
-<div class="page">
-<header class="header">
-  <div class="logo">
+      <div class="page">
+        <header class="header">
+          <div class="logo">
 
-  </div>
-  <!-- <nav>
+          </div>
+          <!-- <nav>
     <a>פרויקטים</a>
     <a>הדמיות חוץ</a>
     <a>פתח תקווה</a>
@@ -61,24 +58,24 @@
 
   </nav> -->
 
-</header>
-<section class="slider">
-  <!-- <button class="nav left" (click)="prev()">></button>
+        </header>
+        <section class="slider">
+          <!-- <button class="nav left" (click)="prev()">></button>
   
   <div class="image-container">
     <img [class.fade]="true" [src]="images[currentIndex]"/>
 
   </div>
   <button class="nav rigth" (click)="next()"><</button> -->
-  <!-- <button class="nav left" (click)="prev()">&#8250;</button> -->
+          <!-- <button class="nav left" (click)="prev()">&#8250;</button> -->
 
-<!-- <div class="image-container">
+          <!-- <div class="image-container">
   <img [class.fade]="true" [src]="images[currentIndex]" />
 </div> -->
 
-<!-- <button class="nav right" (click)="next()">&#8249;</button> -->
-</section>
-<!-- <section class="thumbnails">
+          <!-- <button class="nav right" (click)="next()">&#8249;</button> -->
+        </section>
+        <!-- <section class="thumbnails">
    @for( i of images;track i;){
 <div class="thumb"  (click)="select($index)" > 
     <img [src]="images[$index]"> 
@@ -86,8 +83,5 @@
    }
    
 </section>  -->
-</div>
-<!-- -------------------------------------------------- -->
-
-
-
+      </div>
+      <!-- -------------------------------------------------- -->

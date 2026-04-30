@@ -15,13 +15,14 @@ import { Vieworders } from './component/vieworders/vieworders';
 import { AddPackage } from './component/add-package/add-package';
 import { PictureDetails } from './component/packages/picture-details/picture-details';
 import { Wellcome } from './component/wellcome/wellcome';
+import { About } from './component/about/about';
 
 
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterModule, Customers, LogIn, Register, HOmePage, Packages, UpdateCustomer, MyPackages, Illustration,
-    Orders, Updatepackage, Recommendations, Vieworders, AddPackage,PictureDetails,Wellcome
+    Orders, Updatepackage, Recommendations, Vieworders, AddPackage,PictureDetails,Wellcome,About
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

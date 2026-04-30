@@ -22,7 +22,7 @@ export class Packages {
     this.router.navigate(['/recommendations']);
   }
   vieworders() { this.router.navigate(['/vieworders']) }
-
+ aboute(){this.router.navigate(['/about']);}      
 
   projects = [{
     id: 1,
