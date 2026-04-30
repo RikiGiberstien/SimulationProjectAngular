@@ -16,6 +16,9 @@ srv: Service = inject(Service)
   myorder: OrdersModule = new OrdersModule();
   indd:number=-1
   arr:boolean[]=[]
+selectedCustomer: any = null;
+
+ 
   // starsArray:number[]=[1,2,3,4,5]
   ngOnInit() {
     this.srv.refreshOrders()
@@ -25,18 +28,22 @@ srv: Service = inject(Service)
   updateStatus(bool:boolean){
   if(bool==true)
   this.isEdit=true
-  
+ 
   else
   {  
     this.isEdit=false
     this.srv.updateOrders(this.myorder).subscribe(res => { 
         this.srv.refreshOrders() ;
-  // this.closeEdit.emit(true);
+ 
   })
     }
  
 }
- 
+ openCustomer(orderId: number) {
+  this.srv.getCustomerByOrder(orderId).subscribe(res => {
+    this.selectedCustomer = res;
+  });
+}
 // =============================with stars
   setStars(stars:string){
 this.myorder.status=stars;

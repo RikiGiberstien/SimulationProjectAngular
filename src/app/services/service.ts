@@ -82,6 +82,9 @@ export class Service {
   public GetAllOrders(): Observable<OrdersModule[]> {
     return this.http.get<OrdersModule[]>(this.BASEURL + "Order/GetAllorders/GetAllorders")
   }
+  getCustomerByOrder(orderId: number) {
+  return this.http.get<any>(this.BASEURL + "Order/${orderId}/customer/GetCustomerByOrder");
+}
   // getAuthStatus(): Observable<AuthStatus> {
   //   return this.http.get<AuthStatus>('/api/client/is-authenticated');
   // }
@@ -104,10 +107,13 @@ export class Service {
     this.GetAllRecommendations().subscribe(res => this.list4 = res)
     this.list4$ = this.GetAllRecommendations();
   }
+  
   public refreshIlustrations() {
     this.GetAllillustrationDeals().subscribe(res => this.list2 = res)
     this.list2$ = this.GetAllillustrationDeals();
   }
+
+
 }
 
 export interface AuthStatus {

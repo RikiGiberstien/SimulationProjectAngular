@@ -17,13 +17,25 @@
       @if(isEdit&&myorder.orderId==l.orderId){
         <!-- <input type="text" [(ngModel)]="myorder.status" > -->
           <button (click)="updateStatus(false)">ok</button>
+          
 <div id="statusStars">
           <span  [style.color]="'gold'">*</span>
-        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
-        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+         <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
           <span (click)="setStars('finish')" [style.color]="myorder.status.trim() =='finish'? 'gold' : 'gray'">*</span>
         </div>
+        <!-- ---------------------------------------- -->
   }
+  @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish'){<button
+  >
+פרסם לפריוקט</button>}
+<button (click)="openCustomer(l.orderId)">
+  פרטי לקוח
+</button>
+@if(selectedCustomer){<div >
+  <p>שם: {{selectedCustomer.custName}}</p>
+  <p>טלפון: {{selectedCustomer.phone}}</p>
+  <p>אימייל: {{selectedCustomer.email}}</p>
+</div>}
           <!-- =========================================== is stars-->
           <!-- <div class="stars"> -->
           <!-- <span (click)="setStars(myorder,2)" [style.color]="myorder.stars >=2?'gold' : 'gray'">##</span> -->
