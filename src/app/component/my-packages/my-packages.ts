@@ -28,10 +28,15 @@ export class MyPackages implements OnInit{
      if(this.srv.curentcustomer.customersId==0)
     this.router.navigate(['/homePage'])
   }
-  // משתמש בוחר Guest → הכפתור מושבת
-// onGuestClick() {
-//     this.disableOrderButton = true;
-//   }
+  packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
   mypackages() {
     this.router.navigate(['/orders']);
   }

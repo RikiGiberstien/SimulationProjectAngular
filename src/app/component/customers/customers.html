@@ -4,6 +4,18 @@
     <div class="logo"> <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
     </div>
     <div class="auth-form"> 
+        <nav class="nav">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
+
+    </nav>
         @for(l of srv.list$ | async;track l;let ind=$index )
         {
         

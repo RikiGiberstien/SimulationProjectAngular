@@ -1,6 +1,17 @@
 <!-- צריך לעשות אם האדם הוא מנהל כלומר הוא צריךלראות את החבילות כולל אפשרות של עדכון חבילה וגם הוספת חבילה ואם הוא לא מנהל הוא צריך לראות בלי האפשריות האלו    -->
 <!-- זה לאדם  מנהל -->
+<nav class="nav">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
 
+    </nav>
 @if(srv.curentcustomer.mail=="meair@gmail.com")
 
 {<button (click)="addpackage()">להוספת חבילה</button>

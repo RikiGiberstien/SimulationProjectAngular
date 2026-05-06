@@ -20,8 +20,17 @@ export class Register  {
   srv: Service = inject(Service)
   listTypes: CustomertypeModule[] = []
 
+   homePage() { this.router.navigate(['/homePage']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
   homepage() { this.router.navigate(['/homePage']); }
-  tologin() { this.router.navigate(['/log-in']); }
+  tologin() { this.router.navigate(['/logIn']); }
   //פונק הטענה
   ngOnInit() {
     this.srv.getTypesCustomers().subscribe(res =>

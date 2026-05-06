@@ -14,7 +14,7 @@ export class Packages {
   router = inject(Router)
   activeRoute = inject(ActivatedRoute);
   srv: Service = inject(Service)
-  packages() { this.router.navigate(['/']) }
+   homePage() { this.router.navigate(['/homePage']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
   // personalerea() {this.router.navigate(['/personalArea']); }
@@ -22,7 +22,7 @@ export class Packages {
     this.router.navigate(['/recommendations']);
   }
   vieworders() { this.router.navigate(['/vieworders']) }
- aboute(){this.router.navigate(['/about']);}      
+  about() { this.router.navigate(['/about']) }    
 
   projects = [{
     id: 1,

@@ -3,18 +3,21 @@
   <header class="header">
     <div class="logo">
       <div class="logo-mark"></div>
-      <div class="logo-text">SimuCraft Systems</div>
+      <div class="logo-text">Studio Simulations</div>
     </div>
 
     <nav class="nav">
-      <a (click)="packages()">יציאה מהמערכת</a>
+      <a (click)="homePage()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
       @if(srv.curentcustomer.mail=="meair@gmail.com"){
       <a (click)="cust()">לקוחות</a> }
-       <a (click)="mypac()">חבילות</a>
-       <a (click)="recomms()">ממליצים</a>
+      <a (click)="mypac()">חבילות</a>
       <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
 
-      </nav>
+    </nav>
   </header>
 
   <section class="hero">

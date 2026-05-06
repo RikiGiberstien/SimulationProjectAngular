@@ -13,7 +13,16 @@
   z-index: 0;
   transform: scale(1.05);
 }
+.nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: 0.2s ease;
+}
 
+.nav a:hover {
+  color: #facc15;
+}
 /* שכבת כהות */
 .overlay {
   position: absolute;
@@ -76,7 +85,7 @@
 }
 // 
 
-host {
+:host {
     display: block;
     min-height: 100vh;
     direction: rtl;

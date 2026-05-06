@@ -19,6 +19,15 @@ export class AddPackage {
     if (this.srv.curentcustomer.customersId == 0)
       this.router.navigate(['/homePage'])
   }
+   packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
   addpackage() {
     this.srv.CreatePackage(this.model).subscribe(res => {
       if (res) {

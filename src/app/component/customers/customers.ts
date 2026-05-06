@@ -25,7 +25,15 @@ export class Customers {
 
   }
 
-
+ packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
   update(l: CustomerModule, i: number) {
     this.myCust = l;
     this.isEdit = true

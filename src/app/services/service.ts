@@ -33,7 +33,7 @@ export class Service {
 
   public GetAllCustomers(): Observable<CustomerModule[]> {
 
-    return this.http.get<CustomerModule[]>(this.BASEURL + "Customers/GetAll")
+    return this.http.get<CustomerModule[]>(this.BASEURL + "Customers/GetAllClient/GetAll")
   }
   public updateCustomers(c: CustomerModule): Observable<CustomerModule[]> {
 
@@ -53,11 +53,21 @@ export class Service {
   public GetByMail(mail: string): Observable<CustomerModule> {
     return this.http.get<CustomerModule>(this.BASEURL + "Customers/GetClientByMail/mail", { params: { mail: mail } })
   }
+ 
+  public Hasorder(custId: number) {
+  return this.http.get<boolean>(
+    this.BASEURL + "Reconnendation/Hasorder",
+    { params: { custId: custId } }
+  );
+}
   public CreateCustomer(c: CustomerModule) {
     return this.http.post<boolean>(this.BASEURL + "Customers/CreateClient", c)
 
   }
+ public CreateRecommandation(r: RecommendModule) {
+    return this.http.post<boolean>(this.BASEURL + "Reconnendation/CreateRecommend",r)
 
+  }
   public CreateOrder(o: OrdersModule) {
     return this.http.post<boolean>(this.BASEURL + "Order/CreateOrder/CreateOrder", o)
   }
@@ -82,14 +92,22 @@ export class Service {
   public GetAllOrders(): Observable<OrdersModule[]> {
     return this.http.get<OrdersModule[]>(this.BASEURL + "Order/GetAllorders/GetAllorders")
   }
-  getCustomerByOrder(orderId: number) {
-  return this.http.get<any>(this.BASEURL + "Order/${orderId}/customer/GetCustomerByOrder");
+//   getCustomerByOrder(orderId: number) {
+//   return this.http.get<any>(this.BASEURL + "Order/${orderId}/customer/GetCustomerByOrder");
+// }
+// getCustomerByOrder(orderId: number) {
+//   return this.http.get<any>(`${this.BASEURL}Order/Customer/GetCustomerByOrder/${orderId}` );
+// }
+getCustomerByOrder(orderId: number) {
+  return this.http.get<any>(
+    `${this.BASEURL}Order/GetCustomerByOrder/${orderId}/customer`
+  );
 }
   // getAuthStatus(): Observable<AuthStatus> {
   //   return this.http.get<AuthStatus>('/api/client/is-authenticated');
   // }
   GetAllRecommendations(): Observable<RecommendModule[]> {
-    return this.http.get<RecommendModule[]>(this.BASEURL + "Reconnendation/GetAllRecommendations");
+    return this.http.get<RecommendModule[]>(this.BASEURL + "Reconnendation/GetAllRecommendations/GetAllRecommendations");
   }
   public refreshCustomers() {
     this.GetAllCustomers().subscribe(res => this.list = res)

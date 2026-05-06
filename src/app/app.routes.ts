@@ -15,7 +15,7 @@ import { Wellcome } from './component/wellcome/wellcome';
 import { About } from './component/about/about';
 
 export const routes: Routes = [
-{path:'log-in',component:LogIn},
+{path:'logIn',component:LogIn},
 {path:'register',component:Register},
 {path:'homePage',component:HOmePage},
 {path:'packages',component:Packages},

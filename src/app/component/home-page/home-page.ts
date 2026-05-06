@@ -15,13 +15,13 @@ export class HOmePage {
   srv: Service = inject(Service)
   router = inject(Router)
   activeRoute = inject(ActivatedRoute);
-  login() { this.router.navigate(['/log-in']); }
+  login() { this.router.navigate(['/logIn']); }
   register() { this.router.navigate(['/register']); }
   packages() { this.router.navigate(['/packages']); }
-  ngOnInit() {
-    // if (this.srv.curentcustomer.customersId == 0)
-    //   this.router.navigate(['/homePage'])
-  }
+  // ngOnInit() {
+  //   if (this.srv.curentcustomer.customersId == 0)
+  //     this.router.navigate(['/homePage'])
+  // }
   // login(){
   //   this.router.navigate(["log-in"],{relativeTo:this.activeRoute})
   // }

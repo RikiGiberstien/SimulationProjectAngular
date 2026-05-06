@@ -24,10 +24,14 @@ activeRoute=inject(ActivatedRoute);
 // ngOnInit(){
 //     console.log('Getbyid init, id =', this.id);
 //   }
-ngOnInit(){
-     if(this.srv.curentcustomer.customersId==0)
-    this.router.navigate(['/homePage'])
+ packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
   }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
 toregister(){ this.router.navigate(['/register']); } 
 homepage() { this.router.navigate(['/homePage']); }  
 ok() { 

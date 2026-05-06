@@ -1,7 +1,26 @@
 <div class="auth-page">
     <div class="auth-card">
         <div class="auth-header">
-            <h1>יצירת חבילה חדש</h1>
+          <header class="header">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">SimuCraft Systems</div>
+    </div>
+
+    <nav class="nav">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
+
+    </nav>
+  </header>
+            <h1>יצירת חבילה חדשה</h1>
         </div>
         <div class="auth-form">
             <div class="form-group"> <label for="name">קוד חבילה</label> <input id="name" type="text"

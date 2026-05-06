@@ -1,6 +1,18 @@
 <div class="auth-page">
     <div class="auth-card">
         <div class="auth-header">
+            <nav class="nav">
+      <a (click)="homePage()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
+
+    </nav>
             <h1>יצירת חשבון חדש</h1>
             <p>הצטרף למערכת הניהול של משרד ההדמיות שלך</p>
         </div>

@@ -2,7 +2,7 @@ import { Component ,inject} from '@angular/core';
 import { Service } from '../../services/service';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { OrdersModule } from '../../models/order/orders-moduls';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-vieworders',
@@ -12,17 +12,28 @@ import { FormsModule } from '@angular/forms';
 })
 export class Vieworders {
 srv: Service = inject(Service)
+router = inject(Router)
   isEdit: boolean = false
   myorder: OrdersModule = new OrdersModule();
   indd:number=-1
   arr:boolean[]=[]
 selectedCustomer: any = null;
 
- 
+  packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
   // starsArray:number[]=[1,2,3,4,5]
   ngOnInit() {
     this.srv.refreshOrders()
     this.srv.refreshCustomers()
+    if(this.srv.curentcustomer.customersId==0)
+    this.router.navigate(['/homePage'])
   }
 
   updateStatus(bool:boolean){
