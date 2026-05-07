@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-recommendations',
-  imports: [Customers, RouterOutlet, AsyncPipe,FormsModule],
+  imports: [Customers, RouterOutlet, AsyncPipe,FormsModule,CommonModule],
   templateUrl: './recommendations.html',
   styleUrl: './recommendations.scss'
 
@@ -60,11 +60,11 @@ this.myrecommend.dealId=this.srv.curentorder.dealId
   
 
   // בדיקות בסיסיות לפני שליחה
-  if (!this.myrecommend.recDescription) {
+  if (this.myrecommend.recDescription==null) {
     alert("חסרים נתונים חובה להמלצה");
     return;
   }
-
+else{
   this.srv.CreateRecommandation(this.myrecommend).subscribe(res => {
     if (res) {
       this.srv.refreshRecommendations()
@@ -73,7 +73,7 @@ this.myrecommend.dealId=this.srv.curentorder.dealId
   });
       this.router.navigate(['/recommendations']);
 }  
-}
+}}
 
 
 

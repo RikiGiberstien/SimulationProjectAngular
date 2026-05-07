@@ -44,7 +44,12 @@
   <!--  } -->
          <div class="form-footer"> <button type="button" class="btn gold" (click)="save()">שמור</button>
 
-   
+   <!-- <div class="upload-box">
+      <input type="file" (change)="onFileChange($event)">
+    </div> onFileChange(event: any) {
+    const file = event.target.files[0];
+    this.fileForm.patchValue({ file });
+  } -->
   
 
 
