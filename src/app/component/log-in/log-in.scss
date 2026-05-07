@@ -175,7 +175,16 @@ host {
     font-size: 13px;
     color: #cbd5f5;
 }
+.nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: 0.2s ease;
+}
 
+.nav a:hover {
+  color: #facc15;
+}
 .auth-highlight li {
     margin-bottom: 6px;
     position: relative;

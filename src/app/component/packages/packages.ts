@@ -14,7 +14,7 @@ export class Packages {
   router = inject(Router)
   activeRoute = inject(ActivatedRoute);
   srv: Service = inject(Service)
-  packages() { this.router.navigate(['/']) }
+  homePage() { this.router.navigate(['/homePage']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
   // personalerea() {this.router.navigate(['/personalArea']); }
@@ -22,58 +22,59 @@ export class Packages {
     this.router.navigate(['/recommendations']);
   }
   vieworders() { this.router.navigate(['/vieworders']) }
-
+  about() { this.router.navigate(['/about']) }
 
   projects = [{
     id: 1,
-    title: 'הדמיית דירה יוקרתית',
-    description: 'הדמיה תלת-ממדית לדירת יוקרה בתל אביב.',
-image: "מטבח/4.png",
-    imageArray:[
-    "1.png",
-    "2.png",
-    // "3.jpg",
-    "4.jpg",
-    // "5.jpg",
-    // "6.jpg",
-    "7.jpg"
-  ]
-  
+    title: 'מטבח יפיפה',
+    description:"מעוצב בטוב טעם בסגנון איטלקי מודרני",
+    image: "מטבח/4.png",
+    imageArray: [
+      "מטבח/1.png",
+      "מטבח/2.png",
+      "מטבח/3.png",
+      "מטבח/4.png",
+      "מטבח/5.png",
+      "מטבח/6.png",
+      "מטבח/7.png",
+      "מטבח/8.jpg",
+    ]
+
   },
   {
     id: 2,
     title: 'עיצוב משרד מודרני',
     description: 'הדמיה למשרד בעיצוב מודרני ונקי.',
     image: "מטבח/2.png",
-    imageArray:[
-    // "1.png",
-    // "2.png",
-     "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    // "6.jpg",
-    "7.jpg"
-  ]
+    imageArray: [
+      // "1.png",
+      // "2.png",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg",
+      // "6.jpg",
+      "7.jpg"
+    ]
   },
   {
     id: 3,
     title: 'וילה כפרית',
     description: 'הדמיה חיצונית ופנימית לוילה בסגנון כפרי.',
     image: "מטבח/3.png",
-     imageArray:[
-    // "1.png",
-    // "2.png",
-     "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    // "6.jpg",
-    "7.jpg"
-  ]
+    imageArray: [
+      // "1.png",
+      // "2.png",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg",
+      // "6.jpg",
+      "7.jpg"
+    ]
   }
 
   ];
   pictureDetails(id: number) {
     this.router.navigate(['/pictureDetails'])
   }
-  
+
 }

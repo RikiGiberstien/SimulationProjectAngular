@@ -1,28 +1,59 @@
 
 <section class="packages-section">
-    <div class="packages-title">המלצות מאנשים מרוצים</div>
+     <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">Studio Simulations</div>
+    </div>
     <div class="packages-list">
-         <nav class="nav-links">
-      <a (click)="packages()">יציאה מהמערכת</a>
+       <nav class="nav">
+      <a (click)="homePage()">דף הבית</a>
+      @if(srv.curentcustomer.mail!=null){
       @if(srv.curentcustomer.mail=="meair@gmail.com"){
       <a (click)="cust()">לקוחות</a> }
-      <a>אודות</a>
-       <a (click)="mypac()">חבילות</a>
-       <!-- <a (click)="personalerea()">האזור האישי</a>  -->
-       <a (click)="recomms()">ממליצים</a>
+      <a (click)="mypac()">חבילות</a>
       <a (click)="vieworders()">צפייה בנתונים</a>
-
-      </nav>
+      }
+      <a class="packages-title1" (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
+<div class="packages-title">המלצות מאנשים מרוצים</div>
+    </nav>
         <div class="package-card">
-            <div class="customer-card">
+            
                 @for (i of srv.list4$ | async; track $index) {
+                    <div class="customer-card">
                 <p>תיאור: {{ i.recDescription }}</p>
                 <p>לקוח ממליץ: {{ i.customerName }}</p>
                 <p>ההדמיה: {{ i.dealName }}</p>
+             </div>
                 }
-            </div>
+
         </div>
 
 
     </div>
-</section>
+
+</section>   
+      <div class="form-footer"> <button type="button" class="btn gold" (click)="ok()"> רוצה להמליץ </button>
+@if(Addrecommend){
+    <div [(ngModel)]="myrecommend.recDescription">
+<input type="text"></div>
+<div class="form-footer"> <button type="button" class="btn gold" (click)="save()">שלח המלצה</button>
+</div>}
+@else{<p>לקוח יכול להמליץ רק אם הוא  הזמין אצלנו</p>}
+    <!-- @for(l of srv.list3$ | async;track l;let ind=$index )
+    {
+    @if(srv.curentcustomer.customersId===l.custId){
+    <p>{{l.custName}} היקר/ה</p>
+    <p>סוג החבילה: {{l.dealName}}</p>
+    <p>סיום בתאריך: {{l.orderFinishDate}}</p>
+    <a (click)="updateStatus(true);myorder=l">מצב ההזמנה כרגע </a>
+    <div id="statusStars">
+      <span [style.color]="'gold'">*</span>
+      <span
+        [style.color]="l.status.trim() =='finish' || l.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+      <span [style.color]="l.status.trim() =='finish'? 'gold' : 'gray'">*</span>
+    </div>
+      }} -->
+
+
+ 

@@ -19,6 +19,8 @@ export class Illustration {
 
   ngOnInit() {
     this.srv.refreshIlustrations()
+     if(this.srv.curentcustomer.customersId==0)
+    this.router.navigate(['/homePage'])
   }
   personalerea() {
     this.router.navigate(['/orders']);

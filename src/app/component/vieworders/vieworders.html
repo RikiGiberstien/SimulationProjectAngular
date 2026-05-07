@@ -1,47 +1,93 @@
 <div class="landing">
-  <header class="landing-header"></header>
-
+  <header class="landing-header">
   <div class="logo">
     <span class="logo-mark"></span> <span class="logo-text">Studio Simulations</span>
   </div>
-  <a>לצפייה בלקוחות המזמינים</a>
+  <nav class="nav">
+    <a (click)="packages()">יציאה מהמערכת</a>
+    @if(srv.curentcustomer.mail!=null){
+    @if(srv.curentcustomer.mail=="meair@gmail.com"){
+    <a (click)="cust()">לקוחות</a> }
+    <a (click)="mypac()">חבילות</a>
+    <a (click)="vieworders()">צפייה בנתונים</a>
+    }
+    <a (click)="recomms()">ממליצים</a>
+    <a (click)="about()">אודות</a>
 
+  </nav>
+</header>
+ <!-- צפיה כמנהל -->
+  <!-- <a>לצפייה בלקוחות המזמינים</a> -->
+  @if(srv.curentcustomer.mail=="meair@gmail.com")
+  {
   <div class="auth-form">
- <div class="customer-card"> 
-    @for(l of srv.list3$ | async;track l;let ind=$index )
-    {
-      <p>{{l.custName}} היקר/ה</p>
-  <p>סוג החבילה: {{l.dealName}}</p>
-      <p>סיום בתאריך: {{l.orderFinishDate}}</p>
-      <button (click)="updateStatus(true);myorder=l">מצב ההזמנה כרגע </button>
-      @if(isEdit&&myorder.orderId==l.orderId){
-        <!-- <input type="text" [(ngModel)]="myorder.status" > -->
-          <button (click)="updateStatus(false)">ok</button>
-<div id="statusStars">
-          <span  [style.color]="'gold'">*</span>
-        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
-        <span (click)="setStars('inMiddle')" [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+    <div class="customer-card">
+
+     
+
+      @for(l of srv.list3$ | async;track l;let ind=$index )
+      {
+      <div class="customer-card">
+        <p>{{l.custName}} היקר/ה</p>
+        <p>סוג החבילה: {{l.dealName}}</p>
+        <p>סיום בתאריך: {{l.orderFinishDate}}</p>
+        <button (click)="updateStatus(true);myorder=l">מצב ההזמנה כרגע </button>
+        @if(isEdit&&myorder.orderId==l.orderId)
+        {
+
+        <button (click)="updateStatus(false)">ok</button>
+
+        <div id="statusStars">
+          <span [style.color]="'gold'">*</span>
+          <span (click)="setStars('inMiddle')"
+            [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
           <span (click)="setStars('finish')" [style.color]="myorder.status.trim() =='finish'? 'gold' : 'gray'">*</span>
         </div>
+
+        <!-- ---------------------------------------- -->
+        }
+        @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish'){<button>
+          פרסם לפריוקט</button>}
+        <button (click)="openCustomer(l.orderId)">
+          פרטי לקוח
+        </button>
+        @if(selectedCustomer){<div>
+          <p>שם: {{selectedCustomer.custName}}</p>
+          <p>טלפון: {{selectedCustomer.phone}}</p>
+          <p>אימייל: {{selectedCustomer.email}}</p>
+        </div>}
+        <p>שטח במ"ר {{l.meters}}</p>
+        <p>התקציב: {{l.budget}}</p>
+        <p>הוזמן בתאריך {{l.orderDate}}</p>
+        <p>מזוית: {{l.viewPointId}}</p>
+      </div>
+
+      }
+    </div>
+  </div>
   }
-          <!-- =========================================== is stars-->
-          <!-- <div class="stars"> -->
-          <!-- <span (click)="setStars(myorder,2)" [style.color]="myorder.stars >=2?'gold' : 'gray'">##</span> -->
-          <!-- <span (click)="setStars(order,3)" [style.color]="order.stars >=3?'gold' : 'gray'">⭐⭐⭐</span>
-          <span (click)="setStars(order,4)" [style.color]="order.stars >=4?'gold' : 'gray'">⭐⭐⭐⭐</span>
-          <span (click)="setStars(order,5)" [style.color]="order.stars >=1?'gold' : 'gray'">⭐⭐⭐⭐⭐</span> -->
-          <!-- </div> -->
-          <!-- =============================================== -->
-      <p>שטח במ"ר {{l.meters}}</p>
-      <p>התקציב: {{l.budget}}</p>
-      <p>הוזמן בתאריך {{l.orderDate}}</p>
-      <p>מזוית: {{l.viewPointId}}</p>}
-</div>     
-  </div> 
-   </div> 
-    <!-- @if(l.orderId!=myorder.orderId || (!arr[ind]|| arr[ind]==null)){
-  
-    }
-   -->
 
+ <!-- צפיה כלקוח -->
 
+  @else{
+    <div class="auth-form">
+  <div class="auth-form">
+    @for(l of srv.list3$ | async;track l;let ind=$index )
+    {
+    @if(srv.curentcustomer.customersId===l.custId){
+    <p>{{l.custName}} היקר/ה</p>
+    <p>סוג החבילה: {{l.dealName}}</p>
+    <p>סיום בתאריך: {{l.orderFinishDate}}</p>
+    <a (click)="updateStatus(true);myorder=l">מצב ההזמנה כרגע </a>
+    <div id="statusStars">
+      <span [style.color]="'gold'">*</span>
+      <span
+        [style.color]="l.status.trim() =='finish' || l.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
+      <span [style.color]="l.status.trim() =='finish'? 'gold' : 'gray'">*</span>
+    </div>
+      }}
+</div>
+</div>
+  }
+
+</div>

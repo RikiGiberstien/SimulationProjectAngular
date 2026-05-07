@@ -18,16 +18,28 @@ export class Orders {
  dealId!: number;
 router = inject(Router)
 
-
+ packages() { this.router.navigate(['/packages']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    if (this.srv.curentcustomer.customersId == 0)
+      this.router.navigate(['/homePage'])
+    
     console.log(this.listTypesOfillustration);
      this.dealId = +this.route.snapshot.paramMap.get('dealId')!;
   this.myorder.dealId = this.dealId;
     this.srv.refreshOrders()
     this.srv.GetAllillustrationDeals().subscribe(res =>
       this.listTypesOfillustration = res
+      
       
     )
     console.log("*")

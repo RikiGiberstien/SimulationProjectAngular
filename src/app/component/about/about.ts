@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Service } from '../../services/service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -7,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrl: './about.scss'
 })
 export class About {
+  srv: Service = inject(Service)
+  router = inject(Router)
+  activeRoute = inject(ActivatedRoute);
+  homePage() { this.router.navigate(['/homePage']) }
+  mypac() { this.router.navigate(['/myPackages']) }
+  cust() { this.router.navigate(['/customers']); }
+  // personalerea() {this.router.navigate(['/personalArea']); }
+  recomms() {
+    this.router.navigate(['/recommendations']);
+  }
+  vieworders() { this.router.navigate(['/vieworders']) }
+  about() { this.router.navigate(['/about']) }
 
+  ngOnInit() {
+    this.srv.refreshRecommendations()
+    // if (this.srv.curentcustomer.customersId == 0)
+    //   this.router.navigate(['/homePage'])
+  }
 }

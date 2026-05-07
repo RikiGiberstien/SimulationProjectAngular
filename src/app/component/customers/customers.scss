@@ -6,7 +6,16 @@
     background: radial-gradient(circle at top left, #1f2933 0, #020308 40%, #000000 100%);
     color: #f9fafb;
 }
+.nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: 0.2s ease;
+}
 
+.nav a:hover {
+  color: #facc15;
+}
 .landing {
     min-height: 100vh;
     display: flex;

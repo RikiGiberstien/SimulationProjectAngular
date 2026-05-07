@@ -1,22 +1,15 @@
-<!-- <div class="login-container">
-    <div class="login-box">
-        <h2>כניסה למערכת</h2>
-        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-            <div class="form-group"> <label for="name">שם</label>
-                <input id="name" type="text" name="name" [(ngModel)]="model.name" required />
-            </div>
-            <div class="form-group"> <label for="email">אימייל</label>
-                <input id="email" type="email" name="email" [(ngModel)]="model.email" required />
-            </div>
+<nav class="nav">
+      <a (click)="packages()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
 
-            <button type="submit" [disabled]="loginForm.invalid"  (click) ="ok(true)"> התחבר </button>
-            <p class="register-link"> אין לך משתמש?
-                <a >עבור להרשמה</a>
-            </p>
-        </form>
-    </div>
-</div> -->
-<!-- (click)="goToRegister()" -->
+    </nav>
 <div class="auth-page">
     <div class="auth-card">
         <div class="auth-header">
