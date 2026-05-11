@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-recommendations',
-  imports: [Customers, RouterOutlet, AsyncPipe,FormsModule,CommonModule],
+  imports: [Customers, RouterOutlet, AsyncPipe, FormsModule, CommonModule],
   templateUrl: './recommendations.html',
   styleUrl: './recommendations.scss'
 

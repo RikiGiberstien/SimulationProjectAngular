@@ -35,47 +35,62 @@ selectedCustomer: any = null;
     if(this.srv.curentcustomer.customersId==0)
     this.router.navigate(['/homePage'])
   }
-
-  updateStatus(bool:boolean){
-  if(bool==true)
-  this.isEdit=true
+//this is the original function for update the status of the order, but we want to change it to be disabled if its status is finish
+//   updateStatus(bool:boolean){
+//   if(bool==true)
+//   this.isEdit=true
  
-  else
-  {  
-    this.isEdit=false
-    this.srv.updateOrders(this.myorder).subscribe(res => { 
-        this.srv.refreshOrders() ;
+//   else
+//   {  
+//     this.isEdit=false
+//     this.srv.updateOrders(this.myorder).subscribe(res => { 
+//         this.srv.refreshOrders() ;
  
-  })
-    }
+//   })
+//     }
  
-}
+// }
  openCustomer(orderId: number) {
   this.srv.getCustomerByOrder(orderId).subscribe(res => {
     this.selectedCustomer = res;
   });
 }
-// =============================with stars
-  setStars(stars:string){
-this.myorder.status=stars;
-// this.srv.updatestars(this.myorder.custId,stars).subscribe(()=>{console.log("הכוכבים עודכנו בהצלחה")})
-// }
-//  this.srv.GetAllillustrationDeals().subscribe(res =>
-//       this.listTypesOfillustration = res
-//     )
+//this is the original function for update the status of the order, but we want to change it to be disabled if its status is finish
+//   setStars(stars:string){
+// this.myorder.status=stars;  // }
+
+
+
+
+
+
+   // פונקציה לעדכון הסטטוס בלחיצה על כוכב
+setStars(stars: string) {
+  // חסימה: אם הסטטוס הנוכחי כבר גמור ('finish'), אנחנו לא מאפשרים לשנות אותו חזרה!
+  if (this.myorder.status?.trim() === 'finish') {
+    console.warn('לא ניתן לשנות סטטוס של פרויקט שהסתיים!');
+    return; // עוצר את הפונקציה כאן
   }
+  
+  this.myorder.status = stars;
+}
 
-
-
-// ok(bool: boolean) {
-//     if (bool) {
-//       this.srv.updatePackages(this.deal).subscribe(res => { 
-//        this.srv.refreshDeals() ;
-      
-//       }
-  //     )
-  //   }
-  //    this.closeEdit.emit(true);
-   
+// פונקציה למעבר למצב עריכה ושמירה
+updateStatus(bool: boolean) {
+  if (bool === true) {
+    // חסימה: אם הפרויקט כבר סומן כגמור, לא נאפשר למנהל בכלל להיכנס למצב עריכה שלו
+    if (this.myorder.status?.trim() === 'finish') {
+      alert('פרויקט זה הושלם ולא ניתן לעריכה נוספת.');
+      return;
+    }
+    this.isEdit = true;
+  } 
+  else {  
+    this.isEdit = false;
+    this.srv.updateOrders(this.myorder).subscribe(res => { 
+      this.srv.refreshOrders();
+    });
+  }
+}
  
 }
