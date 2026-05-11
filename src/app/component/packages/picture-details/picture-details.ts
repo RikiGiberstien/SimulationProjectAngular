@@ -1,29 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Service } from '../../../services/service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-picture-details',
   templateUrl: './picture-details.html',
   styleUrls: ['./picture-details.scss'],
 })
-export class PictureDetails {
+export class PictureDetails implements OnInit, OnDestroy {
+
+   srv: Service = inject(Service)
+  router = inject(Router)
+  activeRoute = inject(ActivatedRoute);
   images: string[] = [
     "מטבח/1.png",
     "מטבח/2.png",
     "מטבח/3.png",
-    // "מטבח/4.png",
     "מטבח/5.png",
     "מטבח/6.png",
-    // "מטבח/7.png",
     "מטבח/8.jpg",
   ];
-  currentIndex = 0;
 
+  currentIndex = 0;
   scale: number = 1;
   translateX: number = 0;
   translateY: number = 0;
   isDragging: boolean = false;
   startX: number = 0;
   startY: number = 0;
+
+  autoPlayInterval: any;
+  autoPlaySpeed: number = 5000;
+
+  isGridView: boolean = false;
+  homePage() { this.router.navigate(['/packages']) }
+
+  ngOnInit() {
+    this.startAutoPlay();
+  }
+
+  ngOnDestroy() {
+    this.stopAutoPlay();
+  }
 
   next() {
     this.resetTransform();
@@ -51,8 +69,7 @@ export class PictureDetails {
     event.preventDefault();
     const zoomSpeed = 0.001;
     this.scale += -event.deltaY * zoomSpeed;
-
-    if (this.scale < 0.5) this.scale = 0.5; // מסגרת שחורה כשהקטן מדי
+    if (this.scale < 0.5) this.scale = 0.5;
     if (this.scale > 5) this.scale = 5;
   }
 
@@ -72,11 +89,24 @@ export class PictureDetails {
     this.isDragging = false;
   }
 
-  // לחיצה מחוץ לתמונה מחזירה לגודל המקורי
   onContainerClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (!target.classList.contains('image-main')) {
       this.resetTransform();
     }
+  }
+
+  zoomIn() { this.scale += 0.2; }
+  zoomOut() { this.scale -= 0.2; }
+  fitScreen() { this.resetTransform(); }
+
+  toggleGrid() { this.isGridView = !this.isGridView; }
+
+  startAutoPlay() {
+    this.autoPlayInterval = setInterval(() => this.next(), this.autoPlaySpeed);
+  }
+
+  stopAutoPlay() {
+    if (this.autoPlayInterval) clearInterval(this.autoPlayInterval);
   }
 }

@@ -17,6 +17,7 @@ export class HOmePage {
   activeRoute = inject(ActivatedRoute);
   login() { this.router.navigate(['/logIn']); }
   register() { this.router.navigate(['/register']); }
+
   packages() { this.router.navigate(['/packages']); }
   // ngOnInit() {
   //   if (this.srv.curentcustomer.customersId == 0)

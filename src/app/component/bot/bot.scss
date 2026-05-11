@@ -1,0 +1,24 @@
+/* שינוי צבע הרקע של כפתור הצ'אט */
+.chatbot-button {
+    background-color: #4CAF50; /* צבע ירוק לדוגמה */
+    border-radius: 50%; /* צורת עיגול */
+    width: 60px;
+    height: 60px;
+}
+
+/* שינוי אייקון */
+.chatbot-button img {
+    width: 30px;
+    height: 30px;
+}
+
+/* שינוי מיקום הכפתור */
+.chatbot-container {
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+}
+.chat-window-toggle{
+ background-color: #4CAF50; 
+ color: aqua;
+}

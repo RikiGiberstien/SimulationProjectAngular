@@ -4,6 +4,7 @@ import { CustomerModule } from '../../models/customer/customer-module';
 import { AsyncPipe } from '@angular/common';
 import { UpdateCustomer } from '../update-customer/update-customer';
 import { Router } from '@angular/router';
+import { createChat } from '@n8n/chat';
 
 @Component({
   selector: 'app-customers',

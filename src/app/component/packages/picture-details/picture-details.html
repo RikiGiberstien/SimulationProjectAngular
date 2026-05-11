@@ -1,5 +1,16 @@
+ <header class="header">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">Studio Simulations</div>
+    </div>
+
+    <nav class="nav">
+      <a (click)="homePage()">חזרה לפרויקטים</a>
+    </nav>
+  </header>
+
 <div class="slider" (click)="onContainerClick($event)">
-  <!-- <button class="nav left" (click)="prev()">&#8250;</button> -->
+
 
   <div class="image-container">
     <img class="image-main" [src]="images[currentIndex]" [style.transform]="
@@ -8,20 +19,13 @@
       (mouseup)="onMouseUp($event)" (mouseleave)="onMouseUp($event)" draggable="false" />
   </div>
 
-  <!-- <button class="nav right" (click)="next()">&#8249;</button> -->
 </div>
 
-<!-- <section class="thumbnails">
-  <div class="thumb" *ngFor="let img of images; let i = index" (click)="select(i)">
-    <img [src]="images[i]" />
-  </div>
-</section> -->
+
 
 <button class="nav left" (click)="prev()">&#8250;</button>
 
-<!-- <div class="image-container">
-  <img [class.fade]="true" [src]="images[currentIndex]" />
-</div> -->
+
 
 <button class="nav right" (click)="next()">&#8249;</button>
 

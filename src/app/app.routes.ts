@@ -13,6 +13,8 @@ import { AddPackage } from './component/add-package/add-package';
 import { PictureDetails } from './component/packages/picture-details/picture-details';
 import { Wellcome } from './component/wellcome/wellcome';
 import { About } from './component/about/about';
+import { App } from './app';
+import { Bot } from './component/bot/bot';
 
 export const routes: Routes = [
 {path:'logIn',component:LogIn},
@@ -29,6 +31,8 @@ export const routes: Routes = [
 {path:'pictureDetails',component:PictureDetails},
 {path:'about',component:About},
 { path: '', component: Wellcome },
+{ path: 'bot', component: Bot },
+
 
 
 
