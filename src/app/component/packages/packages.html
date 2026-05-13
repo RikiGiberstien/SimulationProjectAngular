@@ -23,19 +23,27 @@
   <main class="portfolio-main">
 
     <h1>פרויקטים להתרשמות</h1>
-    <div class="projects-list"> 
-
-      @for( i of projects;track i;){
-      <div>
-        <p>{{i.title}}</p>
-        <p>{{i.description}}</p>
-        <div class="image-container">
-          <img [class.fade]="true" [src]="i.image" />
-        </div>
-        <button (click)="pictureDetails(1)">לפרטים נוספים</button>
-
+<div class="projects-list">
+ 
+  @for(i of srv.list5$ | async; track i; let ind=$index){
+    <div>
+      <p>{{ i.id }}</p>
+      <p>{{ i.custId }}</p>
+      <p>{{ i.packageId }}</p>
+      <div class="image-container">
+        <img [class.fade]="true" [src]= "i.image" />
       </div>
-      }
+
+      <button (click)="pictureDetails(i.id)">
+        לפרטים נוספים
+      </button>
+    </div>
+
+  }
+
+</div>
+     
+
 
 <!--      
 <video controls>
@@ -59,3 +67,10 @@
     הדפדפן שלך אינו תומך בניגון וידאו.
   </video>
 </div>
+
+     
+    
+    <!-- FinalDate:Date=new Date()  -->
+    
+
+

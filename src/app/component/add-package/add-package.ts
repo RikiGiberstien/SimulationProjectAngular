@@ -38,6 +38,6 @@ export class AddPackage {
       }
     }
     )
-
+this.router.navigate(['/packages']);
   }
 }

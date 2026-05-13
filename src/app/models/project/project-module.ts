@@ -9,4 +9,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class ProjectModule { }
+export class ProjectModule {
+  id!: number;
+ image!: string;
+  finalDate?: Date;
+ custId?: number;
+  packageId?: number;
+    // customerName: string = ""
+    // dealName: string = ""
+ }

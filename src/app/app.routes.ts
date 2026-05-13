@@ -10,9 +10,9 @@ import { Orders } from './component/orders/orders';
 import { Recommendations } from './component/recommendations/recommendations';
 import { Vieworders } from './component/vieworders/vieworders';
 import { AddPackage } from './component/add-package/add-package';
-import { PictureDetails } from './component/packages/picture-details/picture-details';
 import { Wellcome } from './component/wellcome/wellcome';
 import { About } from './component/about/about';
+
 
 export const routes: Routes = [
 {path:'logIn',component:LogIn},
@@ -26,9 +26,10 @@ export const routes: Routes = [
 {path:'recommendations',component:Recommendations},
 {path:'vieworders',component:Vieworders},
 {path:'addPackage',component:AddPackage},
-{path:'pictureDetails',component:PictureDetails},
+
 {path:'about',component:About},
 { path: '', component: Wellcome },
+
 
 
 

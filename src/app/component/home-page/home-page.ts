@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LogIn } from '../log-in/log-in';
 import { Service } from '../../services/service';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss'
 })
@@ -18,6 +18,9 @@ export class HOmePage {
   login() { this.router.navigate(['/logIn']); }
   register() { this.router.navigate(['/register']); }
   packages() { this.router.navigate(['/packages']); }
+  ngOnInit(): void {
+  this.srv.refreshOrders();
+}
   // ngOnInit() {
   //   if (this.srv.curentcustomer.customersId == 0)
   //     this.router.navigate(['/homePage'])

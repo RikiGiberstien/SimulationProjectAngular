@@ -61,7 +61,7 @@
         }
         @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish'){<button>
           פרסם לפריוקט</button>}
-        <button (click)="openCustomer(l.orderId)">
+        <button (click)="opencCustomer(l.orderId)">
           פרטי לקוח
         </button>
         @if(selectedCustomer){<div>

@@ -45,28 +45,7 @@ router = inject(Router)
     console.log("*")
    console.log(this.listTypesOfillustration);
   }
-//שיציג את כל המתעניינים
-
-// save() {
-//     // if(!this.isFactory)
-//     //   this.model.customerType=307
-//     this.myorder.custId = this.srv.curentcustomer.customersId;
-//     this.myorder.orderDate = new Date();
-//     this.myorder.status = "start";
-//     this.srv.CreateOrder(this.myorder).subscribe(res => {
-//       if (res) {
-//         this.srv.curentorder = this.myorder;
-//         //  this.router.navigate(['/packages'])
-//       }
-//       else {
-//         alert("לקוח קיים , הנך מועבר לכניסה")
-       
-//       }
-//     }
-//     )
-
-//   }
-
+  
 save() {
   
   this.myorder.custId = this.srv.curentcustomer.customersId;

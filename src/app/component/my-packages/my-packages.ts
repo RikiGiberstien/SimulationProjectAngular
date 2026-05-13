@@ -31,7 +31,6 @@ export class MyPackages implements OnInit{
   packages() { this.router.navigate(['/packages']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
-  // personalerea() {this.router.navigate(['/personalArea']); }
   recomms() {
     this.router.navigate(['/recommendations']);
   }
@@ -57,52 +56,7 @@ export class MyPackages implements OnInit{
   addpackage() {
         this.router.navigate(['/addPackage']);
 
-    // this.srv.CreatePackage(this.mypack).subscribe(res => {
-    //   if (res) {
-        
-    //      this.router.navigate(['/packages'])
-    //   }
-    //   else {
-    //     alert("חבילה קיימת")
-        
-    //   }
-    // }
-    // )
-
+    
   } 
 
 }
-
-//the binas
-// import { Component, inject } from '@angular/core';
-// import { AsyncPipe, CommonModule } from '@angular/common';
-// import { Router, ActivatedRoute } from '@angular/router';
-// import { Service } from '../../services/service';
-// import { DealsModule } from '../../models/deal/deals-module';
-// import { Illustration } from '../illustration/illustration';
-
-// @Component({
-//   selector: 'app-my-packages',
-//   standalone: true,                   // אם אתה משתמש ב-standalone components
-//   imports: [AsyncPipe,Illustration,CommonModule],
-//   templateUrl: './my-packages.html',
-//   styleUrls: ['./my-packages.scss']
-// })
-// export class MyPackages {
-//   srv: Service = inject(Service);
-//   router = inject(Router);
-//   activeRoute = inject(ActivatedRoute);
-
-//   ngOnInit() {
-//     this.srv.refresh(); // ודא ש-srv.list1$ מתעדכן כאן
-//   }
-
-//   mypackages() {
-//     this.router.navigate(['/illustration']); // ניווט לדף ההדמיה
-//   }
-
-//   // אופציונלי: פונקציה ל-trackBy כדי לייעל ngFor
-//   trackByDealId(index: number, item: DealsModule) {
-//     return item.dealId;
-//   }
-// }

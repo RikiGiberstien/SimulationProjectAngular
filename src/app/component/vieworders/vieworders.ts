@@ -18,7 +18,8 @@ router = inject(Router)
   indd:number=-1
   arr:boolean[]=[]
 selectedCustomer: any = null;
-
+selectedOrderId: number | null = null;
+// selectedCustomer: any = null;
   packages() { this.router.navigate(['/packages']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
@@ -49,6 +50,7 @@ selectedCustomer: any = null;
 //   })
 //     }
  
+<<<<<<< HEAD
 // }
  openCustomer(orderId: number) {
   this.srv.getCustomerByOrder(orderId).subscribe(res => {
@@ -70,6 +72,28 @@ setStars(stars: string) {
   if (this.myorder.status?.trim() === 'finish') {
     console.warn('לא ניתן לשנות סטטוס של פרויקט שהסתיים!');
     return; // עוצר את הפונקציה כאן
+=======
+}
+ opencCustomer(orderId: number) {
+  this.selectedOrderId = orderId;
+
+  this.srv.getCustomerByOrder(orderId).subscribe({
+    next: (res) => {
+      this.selectedCustomer = res;
+    },
+    error: (err) => console.error(err)
+  });
+}
+
+// =============================with stars
+  setStars(stars:string){
+this.myorder.status=stars;
+// this.srv.updatestars(this.myorder.custId,stars).subscribe(()=>{console.log("הכוכבים עודכנו בהצלחה")})
+// }
+//  this.srv.GetAllillustrationDeals().subscribe(res =>
+//       this.listTypesOfillustration = res
+//     )
+>>>>>>> 6b412b7 (my local changes)
   }
   
   this.myorder.status = stars;

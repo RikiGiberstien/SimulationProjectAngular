@@ -3,7 +3,7 @@ import { Service } from '../../services/service';
 import { CustomerModule } from '../../models/customer/customer-module';
 import { AsyncPipe } from '@angular/common';
 import { UpdateCustomer } from '../update-customer/update-customer';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customers',
@@ -12,6 +12,16 @@ import { Router } from '@angular/router';
   styleUrl: './customers.scss'
 })
 export class Customers {
+
+  // customer-details.component.ts
+
+constructor(
+  private act: ActivatedRoute
+) {}
+
+customerId:number = 0;
+
+
   srv: Service = inject(Service)
   isEdit: boolean = false
   router = inject(Router);
@@ -22,6 +32,10 @@ export class Customers {
     this.srv.refreshCustomers()
     if (this.srv.curentcustomer.customersId == 0)
       this.router.navigate(['/homePage'])
+  //   this.customerId =
+  // Number(this.act.snapshot.paramMap.get('id'));
+  //   this.customerId =
+  // Number(this.act.snapshot.paramMap.get('id'));
 
   }
 

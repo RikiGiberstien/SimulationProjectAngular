@@ -12,6 +12,6 @@ import { CommonModule } from '@angular/common';
 export class PicturesModule {
   imgId: number = 0
   imageUrl: string = ''
-  projactId: number = 0
+  projectId: number = 0
 
 }
