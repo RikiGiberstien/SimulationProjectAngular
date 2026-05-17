@@ -1,0 +1,34 @@
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{3}: checkout: moving from mergebranch3-4 to mergebranch3-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{4}: checkout: moving from mergebranch3-4 to mergebranch3-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{5}: checkout: moving from mergebranch3-4 to mergebranch3-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{6}: checkout: moving from branch-4 to mergebranch3-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{7}: checkout: moving from branch-4 to branch-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{8}: checkout: moving from my-new-branch to branch-4
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{9}: rebase (finish): returning to refs/heads/my-new-branch
+[33me16d4dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmergebranch3-4[m[33m, [m[1;31morigin/my-new-branch[m[33m, [m[1;31morigin/mergebranch3-4[m[33m, [m[1;31morigin/branch-4[m[33m, [m[1;32mmy-new-branch[m[33m, [m[1;32mbranch-4[m[33m)[m HEAD@{10}: rebase (continue): my local changes
+[33me035f76[m HEAD@{11}: pull --rebase (pick): update
+[33mdde4381[m HEAD@{12}: pull --rebase (start): checkout dde4381222fcaf804d31c9054f8dc083fae208bc
+[33m6b412b7[m HEAD@{13}: commit: my local changes
+[33m96c63bd[m HEAD@{14}: pull --no-rebase origin brance2: Merge made by the 'ort' strategy.
+[33m1b72317[m HEAD@{15}: checkout: moving from my-new-branch to my-new-branch
+[33m1b72317[m HEAD@{16}: commit: project state with local changes
+[33m17ec6be[m[33m ([m[1;32mbrance2[m[33m)[m HEAD@{17}: checkout: moving from brance2 to my-new-branch
+[33m17ec6be[m[33m ([m[1;32mbrance2[m[33m)[m HEAD@{18}: pull origin brance2: Fast-forward
+[33mf9bf9df[m HEAD@{19}: checkout: moving from brance2 to brance2
+[33mf9bf9df[m HEAD@{20}: checkout: moving from brance2 to brance2
+[33mf9bf9df[m HEAD@{21}: checkout: moving from main to brance2
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{22}: checkout: moving from brance2 to main
+[33mf9bf9df[m HEAD@{23}: checkout: moving from main to brance2
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{24}: checkout: moving from branch2 to main
+[33mf9bf9df[m HEAD@{25}: checkout: moving from brance2 to branch2
+[33mf9bf9df[m HEAD@{26}: commit: update branch2
+[33m9def50e[m HEAD@{27}: commit: הוספת שינויים ל-vieworders ול-service
+[33m56fb9fe[m HEAD@{28}: commit: brance2 ףינסל םייונישה תפסוה
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{29}: checkout: moving from main to brance2
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{30}: checkout: moving from goooooooooo to main
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{31}: checkout: moving from main to goooooooooo
+[33m96687f7[m[33m ([m[1;32mmain[m[33m, [m[1;32mbrance1[m[33m)[m HEAD@{32}: commit: עדכון שלי
+[33m1aea41c[m HEAD@{33}: clone: from https://github.com/RikiGiberstien/SimulationProjectAngular.git

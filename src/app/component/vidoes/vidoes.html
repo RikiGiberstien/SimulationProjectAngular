@@ -1,0 +1,44 @@
+<p>vidoes works!</p>
+<div class="portfolio">
+   <header class="header">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">Studio Simulations</div>
+    </div>
+
+    <nav class="nav">
+      <a (click)="homePage()">יציאה מהמערכת</a>
+      @if(srv.curentcustomer.mail!=null){
+      @if(srv.curentcustomer.mail=="meair@gmail.com"){
+      <a (click)="cust()">לקוחות</a> }
+      <a (click)="mypac()">חבילות</a>
+      <a (click)="vieworders()">צפייה בנתונים</a>
+      }
+      <a (click)="recomms()">ממליצים</a>
+      <a (click)="about()">אודות</a>
+
+    </nav>
+  </header>
+
+  <router-outlet></router-outlet>
+  <main class="portfolio-main">
+
+    <h1>סרטונים להתרשמות</h1>
+<div class="projects-list">
+ 
+  @for(i of srv.list7$ | async; track i; let ind=$index){
+    <div>
+      <p>{{ i.vidoeId }}</p>
+      <p>{{ i.vidoeDecription }}</p>
+     
+      <!-- <div class="vidoe-container">
+        <img [class.fade]="true" [src]= "i.vidoe" />
+      </div> -->
+
+   
+    </div>
+
+  }
+  
+
+</div>
