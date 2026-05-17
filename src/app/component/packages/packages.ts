@@ -1,80 +1,68 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // <-- עבור ngModel
 import { Service } from '../../services/service';
 import { Customers } from '../customers/customers';
 import { Orders } from '../orders/orders';
+import { CommonModule } from '@angular/common'; // <-- חשוב ל-ngFor וכו'
 
 @Component({
   selector: 'app-packages',
-  imports: [Customers, RouterOutlet, Orders],
+  standalone: true, // אם מדובר בקומפוננטה standalone
+  imports: [
+    CommonModule,       // ngFor, ngIf
+    FormsModule,        // ngModel
+    RouterOutlet,       // router-outlet
+    Customers,
+    Orders
+  ],
   templateUrl: './packages.html',
-  styleUrl: './packages.scss'
+  styleUrls: ['./packages.scss']
 })
 export class Packages {
-  router = inject(Router)
+  router = inject(Router);
   activeRoute = inject(ActivatedRoute);
-  srv: Service = inject(Service)
-  homePage() { this.router.navigate(['/homePage']) }
-  mypac() { this.router.navigate(['/myPackages']) }
-  cust() { this.router.navigate(['/customers']); }
-  // personalerea() {this.router.navigate(['/personalArea']); }
-  recomms() {
-    this.router.navigate(['/recommendations']);
-  }
-  vieworders() { this.router.navigate(['/vieworders']) }
-  about() { this.router.navigate(['/about']) }
+  srv: Service = inject(Service);
 
-  projects = [{
-    id: 1,
-    title: 'מטבח יפיפה',
-    description:"מעוצב בטוב טעם בסגנון איטלקי מודרני",
-    image: "מטבח/4.png",
-    imageArray: [
-      "מטבח/1.png",
-      "מטבח/2.png",
-      "מטבח/3.png",
-      "מטבח/4.png",
-      "מטבח/5.png",
-      "מטבח/6.png",
-      "מטבח/7.png",
-      "מטבח/8.jpg",
-    ]
-
-  },
-  {
-    id: 2,
-    title: 'עיצוב משרד מודרני',
-    description: 'הדמיה למשרד בעיצוב מודרני ונקי.',
-    image: "מטבח/2.png",
-    imageArray: [
-      // "1.png",
-      // "2.png",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg",
-      // "6.jpg",
-      "7.jpg"
-    ]
-  },
-  {
-    id: 3,
-    title: 'וילה כפרית',
-    description: 'הדמיה חיצונית ופנימית לוילה בסגנון כפרי.',
-    image: "מטבח/3.png",
-    imageArray: [
-      // "1.png",
-      // "2.png",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg",
-      // "6.jpg",
-      "7.jpg"
-    ]
-  }
-
+  projects = [
+    {
+      id: 1,
+      title: 'מטבח יפיפה',
+      description:"מעוצב בטוב טעם בסגנון איטלקי מודרני",
+      image: "מטבח/4.png"
+    },
+    {
+      id: 2,
+      title: 'עיצוב משרד מודרני',
+      description: 'הדמיה למשרד בעיצוב מודרני ונקי.',
+      image: "מטבח/2.png"
+    },
+    {
+      id: 3,
+      title: 'וילה כפרית',
+      description: 'הדמיה חיצונית ופנימית לוילה בסגנון כפרי.',
+      image: "מטבח/3.png"
+    }
   ];
-  pictureDetails(id: number) {
-    this.router.navigate(['/pictureDetails'])
-  }
 
+  selectedProjectTitle: string = 'all';
+  filteredProjects = [...this.projects];
+
+  homePage() { this.router.navigate(['/homePage']); }
+  mypac() { this.router.navigate(['/myPackages']); }
+  cust() { this.router.navigate(['/customers']); }
+  recomms() { this.router.navigate(['/recommendations']); }
+  vieworders() { this.router.navigate(['/vieworders']); }
+  about() { this.router.navigate(['/about']); }
+  pictureDetails(id: number) { this.router.navigate(['/pictureDetails']); }
+
+  filterProjects() {
+    if (this.selectedProjectTitle === 'all') {
+      this.filteredProjects = [...this.projects];
+    } else {
+      this.filteredProjects = this.projects.filter(
+        p => p.title === this.selectedProjectTitle
+      );
+    }
+  }
 }

@@ -14,7 +14,7 @@
   flex-direction: column;
 }
 
-/* ===== HEADER (same as about) ===== */
+/* ===== HEADER ===== */
 .header {
   display: flex;
   justify-content: space-between;
@@ -69,11 +69,44 @@
   color: #f9fafb;
 }
 
+/* ===== FILTER DROPDOWN ===== */
+.filter {
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+.filter label {
+  margin-right: 10px;
+  color: #facc15;
+  font-weight: 600;
+}
+
+.filter select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #facc15;
+  background: rgba(15, 23, 42, 0.8);
+  color: #facc15;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter select:hover,
+.filter select:focus {
+  background: rgba(250, 204, 21, 0.1);
+  border-color: #facc15;
+  outline: none;
+}
+
 /* ===== PROJECT GRID ===== */
 .projects-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* שמור על הכרטיסים גדולים */
+  gap: 10px;
+  align-items: start;
+  justify-items: center;
+  justify-content: center; /* מרכז את הכרטיסים כשהמסנן מציג פחות פרויקטים */
+  
 }
 
 /* ===== PROJECT CARD ===== */
@@ -82,9 +115,14 @@
   border: 1px solid rgba(250, 204, 21, 0.15);
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px; /* שמור על הגובה הקודם */
+  max-width: 600px; /* הגדל את הכרטיסים */
+  box-sizing: border-box;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  will-change: transform;
 }
 
 .projects-list > div:hover {
@@ -96,6 +134,7 @@
 /* ===== TEXT ===== */
 .projects-list p {
   color: #cbd5e1;
+  margin: 6px 0;
 }
 
 .projects-list p:first-child {
@@ -108,6 +147,7 @@
   margin-top: 10px;
   overflow: hidden;
   border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .image-container img {
@@ -120,8 +160,8 @@
   transform: scale(1.05);
 }
 
-/* ===== BUTTON ===== */
-button {
+/* ===== BUTTON בתוך הכרטיס ===== */
+.projects-list button {
   margin-top: 10px;
   padding: 8px 14px;
   background: transparent;
@@ -130,9 +170,10 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s ease;
+  align-self: center; /* ממקם את הכפתור במרכז הכרטיס */
 }
 
-button:hover {
+.projects-list button:hover {
   background: #facc15;
   color: #000;
 }

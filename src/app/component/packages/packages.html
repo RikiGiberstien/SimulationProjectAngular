@@ -1,5 +1,5 @@
 <div class="portfolio">
-   <header class="header">
+  <header class="header">
     <div class="logo">
       <div class="logo-mark"></div>
       <div class="logo-text">Studio Simulations</div>
@@ -15,26 +15,35 @@
       }
       <a (click)="recomms()">ממליצים</a>
       <a (click)="about()">אודות</a>
-
     </nav>
   </header>
 
   <router-outlet></router-outlet>
+
   <main class="portfolio-main">
-
     <h1>פרויקטים להתרשמות</h1>
-    <div class="projects-list"> 
 
-      @for( i of projects;track i;){
-      <div>
+    <!-- Dropdown לסינון לפי כותרת -->
+    <div class="filter">
+      <label for="project-select">בחר פרויקט:</label>
+      <select id="project-select" [(ngModel)]="selectedProjectTitle" (change)="filterProjects()">
+        <option value="all">הכל</option>
+        <option *ngFor="let project of projects" [value]="project.title">
+          {{project.title}}
+        </option>
+      </select>
+    </div>
+
+    <div class="projects-list">
+      <!-- הצגת פרויקטים מסוננים -->
+      <div *ngFor="let i of filteredProjects">
         <p>{{i.title}}</p>
         <p>{{i.description}}</p>
         <div class="image-container">
           <img [class.fade]="true" [src]="i.image" />
         </div>
-        <button (click)="pictureDetails(1)">לפרטים נוספים</button>
-
+        <button (click)="pictureDetails(i.id)">לפרטים נוספים</button>
       </div>
-      }
-
-     
+    </div>
+  </main>
+</div>
