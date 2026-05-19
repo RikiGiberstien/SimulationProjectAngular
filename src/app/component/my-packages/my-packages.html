@@ -1,4 +1,3 @@
-<!-- צריך לעשות אם האדם הוא מנהל כלומר הוא צריךלראות את החבילות כולל אפשרות של עדכון חבילה וגם הוספת חבילה ואם הוא לא מנהל הוא צריך לראות בלי האפשריות האלו    -->
 <!-- זה לאדם  מנהל -->
 <nav class="nav">
       <a (click)="packages()">יציאה מהמערכת</a>
@@ -15,6 +14,7 @@
 @if(srv.curentcustomer.mail=="meair@gmail.com")
 
 {<button (click)="addpackage()">להוספת חבילה</button>
+ 
 <div class="auth-form">
   @for(l of srv.list1$ | async;track l ;let ind=$index)
   {
@@ -24,6 +24,7 @@
     <p>תיאור:{{l.dealDescription}}</p>
 
     <a (click)="update(l,ind)">Update</a>
+    <a (click)="deletepackage(l, ind)">Delete</a>
   </div>
   }
   @if(l.dealId==mypack.dealId && arr[ind]){
@@ -44,6 +45,18 @@
         <p>מס' חבילה:{{p.dealId}}</p>
         <p>תיאור:{{p.dealDescription}}</p>
         <button class="package-btn" (click)="personalerea(p.dealId)" [disabled]="disableOrderButton">למילוי טופס הזמנה</button>
+         <button type="button" class="btn gold" (click)="ok($index)"> רוצה להמליץ </button>
+@if(Addrecommend[$index]=='true'){
+   <div class="form-group">
+            <div class="label-form">להקליד המלצה</div> <label for="meters"> </label> <input id="meters" type="text"
+                [(ngModel)]="myrecommend.recDescription" required placeholder="input recommandation" />
+        </div>
+    <!-- <div >
+<input type="text" (input)="myrecommend.recDescription"></div> -->
+
+<div class="form-footer"> <button type="button" class="btn gold" (click)="save(p.dealId,$index)">שלח המלצה</button>
+</div>}
+@if(Addrecommend[$index]=='false'){<p>לקוח יכול להמליץ רק אם הוא  הזמין אצלנו</p>}
       </div>
       }
     </div>

@@ -12,6 +12,7 @@ import { Vieworders } from './component/vieworders/vieworders';
 import { AddPackage } from './component/add-package/add-package';
 import { Wellcome } from './component/wellcome/wellcome';
 import { About } from './component/about/about';
+import { PictureDetails } from './component/packages/picture-details/picture-details';
 
 
 export const routes: Routes = [
@@ -26,7 +27,7 @@ export const routes: Routes = [
 {path:'recommendations',component:Recommendations},
 {path:'vieworders',component:Vieworders},
 {path:'addPackage',component:AddPackage},
-
+{ path: 'picturesDetails', component: PictureDetails },
 {path:'about',component:About},
 { path: '', component: Wellcome },
 

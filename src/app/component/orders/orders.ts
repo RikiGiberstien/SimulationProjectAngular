@@ -3,7 +3,8 @@ import { Service } from '../../services/service';
 import { OrdersModule } from '../../models/order/orders-moduls';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { dealsillustrationmoudule } from '../../models/deal/deals-illustration-moudule';
+import { Dealsillustrationmoudule } from '../../models/deal/deals-illustration-moudule';
+// import { DealsIllustrationModule } from '../../models/deal/deals-illustration-module';
 import { ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-orders',
@@ -14,7 +15,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class Orders {
   srv: Service = inject(Service)
   myorder: OrdersModule = new OrdersModule();
-  listTypesOfillustration: dealsillustrationmoudule[] = []
+  listTypesOfillustration: Dealsillustrationmoudule[] = []
  dealId!: number;
 router = inject(Router)
 
@@ -30,6 +31,7 @@ router = inject(Router)
  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+
     if (this.srv.curentcustomer.customersId == 0)
       this.router.navigate(['/homePage'])
     
@@ -42,15 +44,18 @@ router = inject(Router)
       
       
     )
+  
+  // this.myorder.orderFinishDate = new Date().toISOString().split('T')[0];
+
     console.log("*")
    console.log(this.listTypesOfillustration);
   }
   
 save() {
-  
+  // this.myorder.custName=this.srv.curentcustomer.compNameCustName
   this.myorder.custId = this.srv.curentcustomer.customersId;
   this.myorder.dealId = this.dealId;
-
+  // this.myorder.dealName = this.srv.;
   this.myorder.orderDate = new Date();
   this.myorder.status = "start";
 

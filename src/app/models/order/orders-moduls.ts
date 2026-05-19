@@ -12,7 +12,7 @@ import { routes } from '../../app.routes';
 export class OrdersModule {
   orderId:number = 0;
   dealId:number = 0;
-  orderFinishDate:Date = new Date();
+  orderFinishDate:Date=new Date();
   status:string="";
   meters:number=0;
   budget:number=0;
@@ -21,5 +21,5 @@ export class OrdersModule {
   viewPointId:number=0;
   custName: string = ""
   dealName: string = ""
-  
+  viewPointDescription:string=""
 }

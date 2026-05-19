@@ -36,43 +36,56 @@
         {
 
         <button (click)="updateStatus(false)">ok</button>
-<!-- this is the old code for the stars, we want to make it so that if the order is finish the stars are not clickable and if its inMiddle only the finish
         <div id="statusStars">
           <span [style.color]="'gold'">*</span>
           <span (click)="setStars('inMiddle')"
             [style.color]="myorder.status.trim() =='finish' || myorder.status.trim() =='inMiddle'? 'gold' : 'gray'">*</span>
           <span (click)="setStars('finish')" [style.color]="myorder.status.trim() =='finish'? 'gold' : 'gray'">*</span>
-        </div> -->
-        <div id="statusStars" [style.pointer-events]="myorder.status?.trim() === 'finish' || !isEdit ? 'none' : 'auto'">
-  
-  <span [style.color]="'gold'">*</span>
-  
-  <span (click)="setStars('inMiddle')"
-        [style.color]="myorder.status?.trim() == 'finish' || myorder.status?.trim() == 'inMiddle' ? 'gold' : 'gray'"
-        [style.cursor]="myorder.status?.trim() === 'finish' ? 'not-allowed' : 'pointer'">*</span>
-  
-  <span (click)="setStars('finish')" 
-        [style.color]="myorder.status?.trim() == 'finish' ? 'gold' : 'gray'"
-        [style.cursor]="myorder.status?.trim() === 'finish' ? 'not-allowed' : 'pointer'">*</span>
-        
-</div>
-
-        <!-- ---------------------------------------- -->
+        </div>
+       
         }
-        @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish'){<button>
-          פרסם לפריוקט</button>}
-        <button (click)="opencCustomer(l.orderId)">
-          פרטי לקוח
-        </button>
-        @if(selectedCustomer){<div>
-          <p>שם: {{selectedCustomer.custName}}</p>
-          <p>טלפון: {{selectedCustomer.phone}}</p>
-          <p>אימייל: {{selectedCustomer.email}}</p>
-        </div>}
+      
+        @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish') {
+
+  <button>
+    פרסם לפרויקט
+  </button>
+
+<input type="file" (change)="onFileSelected($event)" />
+<button (click)="uploadImage()">Upload</button>
+
+  
+
+  <!-- <button> -->
+    <button  (click)="save(l)">
+    פרסם ושמור
+  </button>
+
+  <!-- גלריה -->
+  <div class="gallery" *ngIf="showGallery">
+
+    <div class="img-box" *ngFor="let img of allimages">
+      <img [src]="img" (click)="chooseImage(img)" />
+    </div>
+
+  </div>
+
+}
+
+       <button (click)="toggleCustomer(l)">
+  {{ selectedOrderId === l.orderId ? 'סגור פרטים' : 'פרטי לקוח' }}
+</button>
+      @if(selectedOrderId === l.orderId){
+  <div>
+    <p>טלפון: {{selectedCustomer.phone}}</p>
+    <p>אימייל: {{selectedCustomer.mail}}</p>
+  </div>
+}
+        
         <p>שטח במ"ר {{l.meters}}</p>
         <p>התקציב: {{l.budget}}</p>
         <p>הוזמן בתאריך {{l.orderDate}}</p>
-        <p>מזוית: {{l.viewPointId}}</p>
+        <p>מזוית: {{l.viewPointDescription}}</p>
       </div>
 
       }
@@ -104,3 +117,4 @@
   }
 
 </div>
+     

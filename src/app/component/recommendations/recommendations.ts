@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Customers } from '../customers/customers';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { AsyncPipe ,CommonModule} from '@angular/common';
@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 
 })
 export class Recommendations {
+  @Input()
+  dealId!:number
+
   srv: Service = inject(Service)
   router = inject(Router)
   activeRoute = inject(ActivatedRoute);
@@ -66,12 +69,12 @@ this.myrecommend.dealId=this.srv.curentorder.dealId
   }
 else{
   this.srv.CreateRecommandation(this.myrecommend).subscribe(res => {
-    if (res) {
-      this.srv.refreshRecommendations()
-      
-    }
+    if (res)
+      // this.srv.refreshRecommendations()
+        this.router.navigate(['/personalerea']);
+  
   });
-      this.router.navigate(['/recommendations']);
+    
 }  
 }}
 

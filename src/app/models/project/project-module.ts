@@ -15,6 +15,8 @@ export class ProjectModule {
   finalDate?: Date;
  custId?: number;
   packageId?: number;
-    // customerName: string = ""
-    // dealName: string = ""
+  custName: string = ""
+ dealName: string = ""
+ pictures:string[]=[];
+
  }

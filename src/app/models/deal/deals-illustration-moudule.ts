@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
     declarations: [],
     imports: [CommonModule]
 })
-export class dealsillustrationmoudule {
+export class Dealsillustrationmoudule {
     illustrationViewPointId: number = 0
     description: String="פנים" 
 }

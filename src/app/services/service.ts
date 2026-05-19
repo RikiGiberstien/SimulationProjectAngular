@@ -4,12 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CustomertypeModule } from '../models/customer/customertype-module';
 import { DealsModule } from '../models/deal/deals-module';
-import { dealsillustrationmoudule } from '../models/deal/deals-illustration-moudule';
+import { Dealsillustrationmoudule } from '../models/deal/deals-illustration-moudule';
+// import { DealsIllustrationModule } from '../models/deal/deals-illustration-module';
 import { OrdersModule } from '../models/order/orders-moduls';
 import { RecommendModule } from '../models/recommend/recommend-module';
 import { MyPackages } from '../component/my-packages/my-packages';
 import { ProjectModule } from '../models/project/project-module';
 import { PicturesModule } from '../models/pictures/pictures-module';
+import { VidoesModule } from '../models/vidoes/vidoes-module';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,26 +21,26 @@ export class Service {
   http: HttpClient = inject(HttpClient)
   list: CustomerModule[] = []
   list1: DealsModule[] = []
-  list2: dealsillustrationmoudule[] = []
+  list2: Dealsillustrationmoudule[] = []
   list3: OrdersModule[] = []
   list4: RecommendModule[] = []
   list5:ProjectModule[]=[];
   list6:PicturesModule[]=[]
-
+  list7:VidoesModule[]=[]
   list$: Observable<CustomerModule[]> = this.GetAllCustomers();
   list1$: Observable<DealsModule[]> = this.getAllDeals();
-  list2$: Observable<dealsillustrationmoudule[]> = this.GetAllillustrationDeals();
+  list2$: Observable<Dealsillustrationmoudule[]> = this.GetAllillustrationDeals();
   list3$: Observable<OrdersModule[]> = this.GetAllOrders();
   list4$: Observable<RecommendModule[]> = this.GetAllRecommendations()
   list5$:Observable<ProjectModule[]>= this.GetAllProjects()
   list6$:Observable<PicturesModule[]>= this.GetAllPicturs()
+  list7$:Observable<VidoesModule[]>= this.GetAllVidoes()
   curentcustomer: CustomerModule = new CustomerModule();
   curentorder:OrdersModule=new OrdersModule();
   currentPackage:DealsModule=new DealsModule();
   currentProject:ProjectModule=new ProjectModule();
   BASEURL: String = "https://localhost:7191/";
- 
-
+  private apiUrl = 'https://localhost:5001/Projects'; // כתובת API שלך
 
   public GetAllCustomers(): Observable<CustomerModule[]> {
 
@@ -47,10 +50,14 @@ export class Service {
 
     return this.http.get<PicturesModule[]>(this.BASEURL + "Pictures/GetAllPictures")
   }
-  public GetAllProjects(): Observable<ProjectModule[]>{
+  // public GetAllProjects(): Observable<ProjectModule[]>{
 
-    return this.http.get<ProjectModule[]>(this.BASEURL + "Projects/GetAllProjects")
+  //   return this.http.get<ProjectModule[]>(this.BASEURL + "Projects/GetAllProjects")
+  // }
+    public GetAllProjects(): Observable<ProjectModule[]> {
+    return this.http.get<ProjectModule[]>(`${this.apiUrl}/GetAllProjects`);
   }
+
 
   public updateCustomers(c: CustomerModule): Observable<CustomerModule[]> {
 
@@ -67,10 +74,17 @@ export class Service {
   public GetByMail(mail: string): Observable<CustomerModule> {
     return this.http.get<CustomerModule>(this.BASEURL + "Customers/GetClientByMail/mail", { params: { mail: mail } })
   }
+  
+public deletePackage(deal: DealsModule): Observable<DealsModule> {
+  // שימוש ב-request כדי לשלוח את האובייקט ב-body
+  return this.http.request<DealsModule>('DELETE', `${this.BASEURL}Deals/DeleteDeal`, {
+    body: deal
+  });
+}
  
   public Hasorder(custId: number) {
   return this.http.get<boolean>(
-    this.BASEURL + "Reconnendation/Hasorder",
+    this.BASEURL + "Reconnendation/search",
     { params: { custId: custId } }
   );
 }
@@ -79,7 +93,7 @@ export class Service {
 
   }
  public CreateRecommandation(r: RecommendModule) {
-    return this.http.post<boolean>(this.BASEURL + "Reconnendation/CreateRecommend",r)
+    return this.http.post<boolean>(this.BASEURL + "Reconnendation/CreateRecommend/recommend",r)
 
   }
   public CreateOrder(o: OrdersModule) {
@@ -87,12 +101,29 @@ export class Service {
   }
   public CreatePackage(d: DealsModule){
     return this.http.post<boolean>(this.BASEURL + "Deals/CreateDeal/deal",d)
+
   }
+  public CreateProject(data: any){
+    return this.http.post<boolean>(this.BASEURL + "Projects/Createproject",data)
+    
+  }
+ 
   public getTypesCustomers() {
     return this.http.get<CustomertypeModule[]>(this.BASEURL + "CustomerType/GetAllTypes/GetAllTypes")
   }
  
 
+  // constructor(private http: HttpClient) {}
+uploadImage(file: File): Observable<{ url: string }> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData);
+  }
+
+  getProjectImages(projectId: number): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/project/${projectId}`);
+  }
+  
   // ----------------------------
   // ----------------------------
   getPicturesByProjectId(projectId: number) {
@@ -102,11 +133,14 @@ export class Service {
   public getAllDeals(): Observable<DealsModule[]> {
     return this.http.get<DealsModule[]>(this.BASEURL + "Deals/GetAllDeals")
   }
-  public GetAllillustrationDeals(): Observable<dealsillustrationmoudule[]> {
-    return this.http.get<dealsillustrationmoudule[]>(this.BASEURL + "Illustration/GetAllIllustration/GetAllIllustration")
+  public GetAllillustrationDeals(): Observable<Dealsillustrationmoudule[]> {
+    return this.http.get<Dealsillustrationmoudule[]>(this.BASEURL + "Illustration/GetAllIllustration/GetAllIllustration")
   }
    public GetAllOrders(): Observable<OrdersModule[]> {
     return this.http.get<OrdersModule[]>(this.BASEURL + "Order/GetAllorders")
+  }
+   public GetAllVidoes(): Observable<VidoesModule[]> {
+    return this.http.get<VidoesModule[]>(this.BASEURL + "Vidoes/GetAllvidoes")
   }
 //   getCustomerByOrder(orderId: number) {
 //   return this.http.get<any>(this.BASEURL + "Order/${orderId}/customer/GetCustomerByOrder");
@@ -114,11 +148,15 @@ export class Service {
 // getCustomerByOrder(orderId: number) {
 //   return this.http.get<any>(`${this.BASEURL}Order/Customer/GetCustomerByOrder/${orderId}` );
 // }
-getCustomerByOrder(orderId: number) {
-  return this.http.get<any>(
-    `${this.BASEURL}Order/GetCustomerByOrder/${orderId}/customer`
-  );
-}
+// getCustomerByOrder(orderId: number) {
+//   return this.http.get<any>(
+//     `${this.BASEURL}Order/GetCustomerByOrder/${orderId}/customer`
+//   );
+// }
+public GetClientByOrder(custId: number): Observable<CustomerModule> {
+    return this.http.get<CustomerModule>(this.BASEURL + "Order/GetClientByOrder/custId", { params: { custId: custId } })
+  }
+
   // getAuthStatus(): Observable<AuthStatus> {
   //   return this.http.get<AuthStatus>('/api/client/is-authenticated');
   // }
@@ -154,7 +192,10 @@ getCustomerByOrder(orderId: number) {
     this.GetAllPicturs().subscribe(res => this.list6 = res)
     this.list6$ = this.GetAllPicturs();
   }
-
+public refreshVidoes(){
+this.GetAllVidoes().subscribe(res=>this.list7=res)
+this.list7$ = this.GetAllVidoes();
+}
 
 }
 
@@ -162,6 +203,8 @@ export interface AuthStatus {
   isAuthenticated: boolean;
 }
 // ----------------
+
+
 
 
 

@@ -27,9 +27,9 @@
  
   @for(i of srv.list5$ | async; track i; let ind=$index){
     <div>
-      <p>{{ i.id }}</p>
-      <p>{{ i.custId }}</p>
-      <p>{{ i.packageId }}</p>
+      <!-- <p>{{ i.id }}</p> -->
+      <p>{{ i.custName }}</p>
+      <p>{{ i.dealName }}</p>
       <div class="image-container">
         <img [class.fade]="true" [src]= "i.image" />
       </div>
@@ -40,6 +40,7 @@
     </div>
 
   }
+  
 
 </div>
      
@@ -67,6 +68,7 @@
     הדפדפן שלך אינו תומך בניגון וידאו.
   </video>
 </div>
+
 
      
     

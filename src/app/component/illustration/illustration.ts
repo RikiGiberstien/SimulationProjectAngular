@@ -1,7 +1,8 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Service } from '../../services/service';
-import { dealsillustrationmoudule } from '../../models/deal/deals-illustration-moudule';
+import { Dealsillustrationmoudule } from '../../models/deal/deals-illustration-moudule';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Orders } from '../orders/orders';
 @Component({
@@ -10,28 +11,27 @@ import { Orders } from '../orders/orders';
   standalone: true,
   templateUrl: './illustration.html',
   styleUrls: ['./illustration.scss']
-})
-export class Illustration {
-  srv: Service = inject(Service)
-  myCust: dealsillustrationmoudule = new dealsillustrationmoudule();
-  router = inject(Router);
-  activeRoute = inject(ActivatedRoute);
+ 
 
-  ngOnInit() {
-    this.srv.refreshIlustrations()
-     if(this.srv.curentcustomer.customersId==0)
-    this.router.navigate(['/homePage'])
+})
+export class Illustration implements OnInit {
+  myCust: Dealsillustrationmoudule = new Dealsillustrationmoudule();
+  router: Router = inject(Router);
+  activeRoute: ActivatedRoute = inject(ActivatedRoute);
+ srv: Service = inject(Service)
+  // constructor(private srv: SomeService) {}
+
+  ngOnInit(): void {
+    this.srv.refreshIlustrations();
+    if(this.srv.curentcustomer?.customersId == 0) {
+      this.router.navigate(['/homePage']);
+    }
   }
-  personalerea() {
+
+  personalerea(): void {
     this.router.navigate(['/orders']);
   }
-
-  // trackByIllustrationId(index: number, item: dealsillustrationmoudule) {
-  //   return item.IllustrationViewPointId;
-  // }
-
 }
-
 
 
 

@@ -1,37 +1,39 @@
-<!-- <div class="slider" (click)="onContainerClick($event)"> -->
-  <!-- <button class="nav left" (click)="prev()">&#8250;</button> -->
+<div class="slider" (click)="onContainerClick($event)">
 
-  <!-- <div class="image-container">
-    <img class="image-main" [src]="images[currentIndex]" [style.transform]="
+  <button class="nav left" (click)="prev()">&#8250;</button>
+
+  <div class="image-container">
+
+    <img
+      class="image-main"
+      [src]="images[currentIndex]?.imageUrl"
+      [style.transform]="
         'scale(' + scale + ') translate(' + translateX + 'px,' + translateY + 'px)'
-      " (wheel)="onWheel($event)" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
-      (mouseup)="onMouseUp($event)" (mouseleave)="onMouseUp($event)" draggable="false" />
-  </div> -->
+      "
+      (wheel)="onWheel($event)"
+      (mousedown)="onMouseDown($event)"
+      (mousemove)="onMouseMove($event)"
+      (mouseup)="onMouseUp($event)"
+      (mouseleave)="onMouseUp($event)"
+      draggable="false"
+    />
 
-  <!-- <button class="nav right" (click)="next()">&#8249;</button> -->
-<!-- </div> -->
-
-<!-- <section class="thumbnails">
-  <div class="thumb" *ngFor="let img of images; let i = index" (click)="select(i)">
-    <img [src]="images[i]" />
   </div>
-</section> -->
 
-<!-- <button class="nav left" (click)="prev()">&#8250;</button> -->
+  <button class="nav right" (click)="next()">&#8249;</button>
 
-<!-- <div class="image-container">
-  <img [class.fade]="true" [src]="images[currentIndex]" />
-</div> -->
+</div>
 
-<!-- <button class="nav right" (click)="next()">&#8249;</button> -->
+<section class="thumbnails">
 
+  @for(im of images; track im.imgId; let i = $index){
 
-<!-- <section class="thumbnails">
-  @for( i of images;track i;){
+    <div class="thumb" (click)="select(i)">
 
-  <div class="thumb" (click)="select($index)">
-    <img [src]="images[$index]">
-  </div>
+      <img [src]="im.imageUrl">
+
+    </div>
+
   }
 
-</section> -->
+</section>

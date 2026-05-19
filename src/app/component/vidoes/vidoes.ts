@@ -10,7 +10,8 @@ import { PicturesModule } from '../../models/pictures/pictures-module';
 import { VidoesModule } from '../../models/vidoes/vidoes-module';
 @Component({
   selector: 'app-vidoes',
-  imports: [Customers, RouterOutlet, Orders,AsyncPipe,PictureDetails],
+  // imports: [Customers, RouterOutlet, Orders,AsyncPipe,PictureDetails],
+  imports: [Customers, RouterOutlet, Orders,AsyncPipe],
   templateUrl: './vidoes.html',
   styleUrl: './vidoes.scss'
 })
@@ -21,7 +22,7 @@ export class Vidoes {
   srv: Service = inject(Service)
  vidoes:[]=[]  
   ngOnInit() {
-    this.srv.refreshVidoes()
+    // this.srv.refreshVidoes()
   }
   homePage() { this.router.navigate(['/homePage']) }
   mypac() { this.router.navigate(['/myPackages']) }
