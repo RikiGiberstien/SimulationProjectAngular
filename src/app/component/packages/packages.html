@@ -31,7 +31,8 @@
       <p>{{ i.custName }}</p>
       <p>{{ i.dealName }}</p>
       <div class="image-container">
-        <img [class.fade]="true" [src]= "i.image" />
+       <img [src]="'https://localhost:7191' + i.image">
+
       </div>
 
       <button (click)="pictureDetails(i.id)">

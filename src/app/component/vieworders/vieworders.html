@@ -22,8 +22,7 @@
   {
   <div class="auth-form">
     <div class="customer-card">
-
-     
+<h2>פרויקטים בתהליך</h2>
 
       @for(l of srv.list3$ | async;track l;let ind=$index )
       {
@@ -47,28 +46,33 @@
       
         @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish') {
 
-  <button>
+  <!-- <button>
     פרסם לפרויקט
-  </button>
+  </button> -->
 
-<input type="file" (change)="onFileSelected($event)" />
-<button (click)="uploadImage()">Upload</button>
+<!-- <input type="file" (change)="onMainImageSelected($event)" />
+<button (click)="uploadMainImage()">Upload</button> -->
+<input type="file" (change)="onMainImageSelected($event)" />
 
-  
-
+<button (click)="uploadMainImage()">
+  הפוך להזמנה לפרויקט
+</button>
+<!-- -----zv yuc -->
+<!-- <input type="file" multiple (change)="onGalleryFilesSelected($event)" />
+<button (click)="uploadGalleryImages()">Upload Gallery</button> -->
   <!-- <button> -->
-    <button  (click)="save(l)">
+    <!-- <button  (click)="save(l)">
     פרסם ושמור
-  </button>
+  </button> -->
 
   <!-- גלריה -->
-  <div class="gallery" *ngIf="showGallery">
-
+  <!-- <div class="gallery" *ngIf="showGallery"> -->
+<!-- 
     <div class="img-box" *ngFor="let img of allimages">
       <img [src]="img" (click)="chooseImage(img)" />
-    </div>
+    </div> -->
 
-  </div>
+  <!-- </div> -->
 
 }
 
@@ -91,6 +95,8 @@
       }
     </div>
   </div>
+  <h2>פרויקטים גמורים</h2>
+
   }
 
  <!-- צפיה כלקוח -->
@@ -118,3 +124,4 @@
 
 </div>
      
+

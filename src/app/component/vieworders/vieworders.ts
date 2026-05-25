@@ -19,14 +19,21 @@ srv: Service = inject(Service)
 router = inject(Router)
   isEdit: boolean = false
   myorder: OrdersModule = new OrdersModule();
+   mypro: ProjectModule = new ProjectModule();
   indd:number=-1
   arr:boolean[]=[]
 allimages: string[] = [];
 selectedCustomer: any = null;
 selectedOrderId: number | null = null;
 Addrecommend:boolean=false;
-selectedFile: File | null = null;
- 
+
+
+// selectedFile: File | null = null;
+galleryFiles: File[] = []; 
+selectedMainImage: string = '';
+mainImageFile: File | null = null;
+galleryImages: string[] = [];
+currentProjectId: number | null = null;
 // selectedCustomer: any = null;
   packages() { this.router.navigate(['/packages']) }
   mypac() { this.router.navigate(['/myPackages']) }
@@ -42,6 +49,7 @@ selectedFile: File | null = null;
 
       this.srv.refreshOrders()
     this.srv.refreshCustomers()
+    this.srv.refreshProjects()
     if(this.srv.curentcustomer.customersId==0)
     this.router.navigate(['/homePage'])
   }
@@ -77,7 +85,6 @@ this.myorder.status=stars; }
 
 
 
-
 toggleCustomer(order: any) {
 
   // אם לוחצים שוב על אותו כפתור → סוגר
@@ -102,136 +109,63 @@ toggleCustomer(order: any) {
   });
 }
 
- chooseimage(){
-  //לוגקה של שמירת תמונה
-  console.log(event?.target);
-  
- }
+// onGalleryFilesSelected(event: any) {
+//   this.galleryFiles = Array.from(event.target.files);
+//   console.log('Selected gallery files:', this.galleryFiles);
+// }
 
- 
- save(order: OrdersModule) {
-  const projectPayload: ProjectModule = {
-    id: 0, // או ערך מתאים
-    image: this.selectedImage, // יש לוודא שמדובר ב-string
-    finalDate: order.orderFinishDate,
-    custId: order.custId,
-    packageId: order.dealId, // או order.packageId אם קיים
-    custName: order.custName,
-    dealName: order.dealName,
-    pictures: [] // ריק במידה ואין תמונות נוספות
-  };
+// uploadGalleryImages() {
+//   if (!this.galleryFiles.length || !this.currentProjectId) {
+//     alert('בחר קבצים ומזהה פרויקט');
+//     return;
+//   }
+//   this.srv.uploadProjectGallery(this.galleryFiles, this.currentProjectId).subscribe({
+//     next: (res) => {
+//       alert('גלריה נשמרה');
+//       this.loadGalleryImages();
+//     },
+//     error: (err) => alert('שגיאה בהעלאת גלריה')
+//   });
+// }
 
-  this.srv.CreateProject(projectPayload).subscribe(res => {
-    if(res) {
-      console.log('Project saved successfully', res);
-      this.srv.refreshProjects();
-    } else {
-      console.log('Error saving project');
-    }
-    
-  });
-   this.router.navigate(['/packages']); 
-}
+// loadGalleryImages() {
+//   if (!this.currentProjectId) return;
+//   this.srv.getProjectImages(this.currentProjectId).subscribe({
+//     next: (res) => this.galleryImages = res,
+//     error: (err) => alert('שגיאה בטעינת גלריה')
+//   });
+// }
 
-
-
-  images: string[] = [
-    'מטבח/1.png',
-   'מטבח/2.png',
-    'מטבח/3.png',
-    '/public/img4.jpg'
-  ];
-
-  
-
-  // closeGallery() {
-  //   this.showGallery = false;
-  // }
-
-
-selectedImage: string="";
-
-showGallery = false;
-
-openGallery() {
-  this.showGallery = true;
-}
-
-chooseImage(img: string) {
-  this.selectedImage = img;
-  this.showGallery = false;
-
-  console.log('selected image:', img);
-}
-
-
-
-
-onFileSelected(event: any) {
-  if (event.target.files.length > 0) {
+// setMainImageFromGallery(imageUrl: string) {
+//   this.selectedMainImage = imageUrl;
+  selectedFile!: File; // כאן אפשר לשלוח עדכון לשרת שהתמונה הזו היא הראשית
+ onMainImageSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    console.log('Selected file:', this.selectedFile);
   }
-}
+  uploadMainImage() {
+    if (!this.selectedFile) return;
 
-uploadImage() {
-  if (!this.selectedFile) {
-    alert('No file selected!');
-    return;
+    this.srv.uploadProject(
+      this.selectedFile,
+      this.myorder.custId,
+      this.myorder.dealId,
+      this.myorder.orderFinishDate ?? null
+    ).subscribe({
+      next: (res) => {
+        // עדכון סטטוס ההזמנה ל-'finish' והעברה ל'פרויקטים גמורים'
+        this.myorder.status = 'finish';
+        this.srv.updateOrders(this.myorder).subscribe(() => {
+          this.srv.refreshOrders();
+        });
+        console.log('Project created', res);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
-
-  this.srv.uploadImage(this.selectedFile).subscribe({
-    next: (res) => {
-      console.log('Uploaded image URL:', res.url);
-      this.chooseImage(res.url); // שומר ל־selectedImage ומסתיר את הגלריה
-    },
-    error: (err) => console.error('Upload failed', err)
-  });
-}
-
-  // כל התמונות של הפרויקט
-
-loadProjectImages(projectId: number) {
-  this.srv.getProjectImages(projectId).subscribe({
-    next: (res) => {
-      this.allimages = res; // כל התמונות מהשרת
-    },
-    error: (err) => console.error('Failed to load project images', err)
-  });
-}
 }
 
 // // // =============================with stars
-
-
-// // פונקציה למעבר למצב עריכה ושמירה
-// updateStatus(bool: boolean) {
-//   if (bool === true) {
-//     // חסימה: אם הפרויקט כבר סומן כגמור, לא נאפשר למנהל בכלל להיכנס למצב עריכה שלו
-//     if (this.myorder.status?.trim() === 'finish') {
-//       alert('פרויקט זה הושלם ולא ניתן לעריכה נוספת.');
-//       return;
-//     }
-//     this.isEdit = true;
-//   } 
-//   else {  
-//     this.isEdit = false;
-//     this.srv.updateOrders(this.myorder).subscribe(res => { 
-//       this.srv.refreshOrders();
-//     });
-//   }
-// }
-
-
-
-  
-
- 
-
- 
-
-    // שליחה ל-C# backend (לפי Swagger API שלך)
-    // --------------------------------------------------
-
 
 

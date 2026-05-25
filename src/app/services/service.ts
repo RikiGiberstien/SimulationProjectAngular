@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { CustomertypeModule } from '../models/customer/customertype-module';
 import { DealsModule } from '../models/deal/deals-module';
 import { Dealsillustrationmoudule } from '../models/deal/deals-illustration-moudule';
-// import { DealsIllustrationModule } from '../models/deal/deals-illustration-module';
 import { OrdersModule } from '../models/order/orders-moduls';
 import { RecommendModule } from '../models/recommend/recommend-module';
 import { MyPackages } from '../component/my-packages/my-packages';
@@ -40,7 +39,7 @@ export class Service {
   currentPackage:DealsModule=new DealsModule();
   currentProject:ProjectModule=new ProjectModule();
   BASEURL: String = "https://localhost:7191/";
-  private apiUrl = 'https://localhost:5001/Projects'; // כתובת API שלך
+  private apiUrl = 'https://localhost:7191/Projects'; // כתובת API שלך
 
   public GetAllCustomers(): Observable<CustomerModule[]> {
 
@@ -103,10 +102,10 @@ public deletePackage(deal: DealsModule): Observable<DealsModule> {
     return this.http.post<boolean>(this.BASEURL + "Deals/CreateDeal/deal",d)
 
   }
-  public CreateProject(data: any){
-    return this.http.post<boolean>(this.BASEURL + "Projects/Createproject",data)
+  // public CreateProject(data: any){
+  //   return this.http.post<number>(this.BASEURL + "Projects/Createproject",data)
     
-  }
+  // }
  
   public getTypesCustomers() {
     return this.http.get<CustomertypeModule[]>(this.BASEURL + "CustomerType/GetAllTypes/GetAllTypes")
@@ -114,12 +113,30 @@ public deletePackage(deal: DealsModule): Observable<DealsModule> {
  
 
   // constructor(private http: HttpClient) {}
-uploadImage(file: File): Observable<{ url: string }> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData);
-  }
+// uploadImage(file: File): Observable<{ url: string }> {
+//     const formData = new FormData();
+//     formData.append('file', file);
+//     return this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData);
+//   }
+uploadImage(
+  file: File,
+  custId: number,
+  packageId: number,
+  finalDate: any
+): Observable<any> {
 
+  const formData = new FormData();
+
+  formData.append('file', file);
+  formData.append('custId', custId.toString());
+  formData.append('packageId', packageId.toString());
+  formData.append('finalDate', finalDate);
+
+  return this.http.post(
+    this.BASEURL + "Projects/UploadProject",
+    formData
+  );
+}
   getProjectImages(projectId: number): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/project/${projectId}`);
   }
@@ -197,7 +214,62 @@ this.GetAllVidoes().subscribe(res=>this.list7=res)
 this.list7$ = this.GetAllVidoes();
 }
 
+
+
+
+  // =========================
+  // יצירת פרויקט חדש עם תמונה ראשית  
+  // =========================
+  uploadProject(file: File, custId: number, packageId: number, finalDate: any): Observable<any> {
+
+  const formData = new FormData();
+
+  formData.append('file', file);
+  formData.append('custId', custId.toString());
+  formData.append('packageId', packageId.toString());
+
+  if (finalDate) {
+    formData.append('finalDate', new Date(finalDate).toISOString());
+  }
+
+  return this.http.post(this.BASEURL + "Projects/UploadProject",formData);
 }
+//   uploadMainProjectImage(file: File,custId: number,packageId: number,finalDate: any):  Observable<any>
+    
+//   {
+
+//     const formData = new FormData();
+//     formData.append('file', file);
+//     formData.append('custId', custId.toString());
+//     formData.append('packageId', packageId.toString());
+//     formData.append('finalDate', finalDate);
+
+//     return this.http.post(
+// this.BASEURL + "Projects/upload",
+//         formData
+//     );
+//   }
+
+  // =========================
+  // הרבה תמונות קטנות
+  // =========================
+  uploadProjectGallery(files: File[], projectId: number): Observable<any> {
+
+    const formData = new FormData();
+
+    files.forEach(file  => {
+      formData.append('files', file );
+    });
+
+    formData.append('projectId', projectId.toString());
+
+    return this.http.post(
+      this.BASEURL + "Picture/upload-gallery",
+      formData
+    );
+  }
+}
+
 
 export interface AuthStatus {
   isAuthenticated: boolean;
