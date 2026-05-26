@@ -26,14 +26,15 @@ allimages: string[] = [];
 selectedCustomer: any = null;
 selectedOrderId: number | null = null;
 Addrecommend:boolean=false;
+custId: number = 0;
 
-
+galleryImages: any[] = [];
+currentProjectId: number | null = null;
 // selectedFile: File | null = null;
 galleryFiles: File[] = []; 
 selectedMainImage: string = '';
 mainImageFile: File | null = null;
-galleryImages: string[] = [];
-currentProjectId: number | null = null;
+
 // selectedCustomer: any = null;
   packages() { this.router.navigate(['/packages']) }
   mypac() { this.router.navigate(['/myPackages']) }
@@ -46,7 +47,7 @@ currentProjectId: number | null = null;
   about() { this.router.navigate(['/about']) }
   // starsArray:number[]=[1,2,3,4,5] 
  constructor() {
-
+this.custId=history.state?.customerId
       this.srv.refreshOrders()
     this.srv.refreshCustomers()
     this.srv.refreshProjects()
@@ -109,36 +110,8 @@ toggleCustomer(order: any) {
   });
 }
 
-// onGalleryFilesSelected(event: any) {
-//   this.galleryFiles = Array.from(event.target.files);
-//   console.log('Selected gallery files:', this.galleryFiles);
-// }
 
-// uploadGalleryImages() {
-//   if (!this.galleryFiles.length || !this.currentProjectId) {
-//     alert('בחר קבצים ומזהה פרויקט');
-//     return;
-//   }
-//   this.srv.uploadProjectGallery(this.galleryFiles, this.currentProjectId).subscribe({
-//     next: (res) => {
-//       alert('גלריה נשמרה');
-//       this.loadGalleryImages();
-//     },
-//     error: (err) => alert('שגיאה בהעלאת גלריה')
-//   });
-// }
-
-// loadGalleryImages() {
-//   if (!this.currentProjectId) return;
-//   this.srv.getProjectImages(this.currentProjectId).subscribe({
-//     next: (res) => this.galleryImages = res,
-//     error: (err) => alert('שגיאה בטעינת גלריה')
-//   });
-// }
-
-// setMainImageFromGallery(imageUrl: string) {
-//   this.selectedMainImage = imageUrl;
-  selectedFile!: File; // כאן אפשר לשלוח עדכון לשרת שהתמונה הזו היא הראשית
+selectedFile!: File; // כאן אפשר לשלוח עדכון לשרת שהתמונה הזו היא הראשית
  onMainImageSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
@@ -146,26 +119,60 @@ toggleCustomer(order: any) {
     if (!this.selectedFile) return;
 
     this.srv.uploadProject(
-      this.selectedFile,
-      this.myorder.custId,
-      this.myorder.dealId,
-      this.myorder.orderFinishDate ?? null
-    ).subscribe({
-      next: (res) => {
-        // עדכון סטטוס ההזמנה ל-'finish' והעברה ל'פרויקטים גמורים'
-        this.myorder.status = 'finish';
-        this.srv.updateOrders(this.myorder).subscribe(() => {
-          this.srv.refreshOrders();
-        });
-        console.log('Project created', res);
-      },
-      error: (err) => {
-        console.error(err);
-      }
+  this.selectedFile,
+  this.myorder.custId,
+  this.myorder.dealId,
+  this.myorder.orderFinishDate ?? null
+).subscribe({
+  next: (res: any) => {
+
+    this.currentProjectId = res.projectId; 
+
+    this.myorder.status = 'finish';
+
+    this.srv.updateOrders(this.myorder).subscribe(() => {
+      this.srv.refreshOrders();
     });
+
+    console.log('Project created', res);
   }
-}
+});
+  }
+
+
 
 // // // =============================with stars
 
 
+onGalleryFilesSelected(event: any) {
+  this.galleryFiles = Array.from(event.target.files);
+  console.log('Selected gallery files:', this.galleryFiles);
+}
+
+uploadGalleryImages() {
+  if (!this.galleryFiles.length || !this.currentProjectId) {
+    alert('בחר קבצים ומזהה פרויקט');
+    return;
+  }
+  this.srv.uploadProjectGallery(this.galleryFiles, this.currentProjectId).subscribe({
+    next: (res) => {
+      alert('גלריה נשמרה');
+      this.loadGalleryImages();
+    },
+    error: (err) => alert('שגיאה בהעלאת גלריה')
+  });
+  console.log('projectId:', this.currentProjectId);
+console.log('files:', this.galleryFiles);
+}
+loadGalleryImages() {
+  if (!this.currentProjectId) return;
+  this.srv.getProjectImages(this.currentProjectId).subscribe({
+    next: (res) => this.galleryImages = res,
+    error: (err) => alert('שגיאה בטעינת גלריה')
+  });
+}
+}
+
+
+// setMainImageFromGallery(imageUrl: string) {
+//   this.selectedMainImage = imageUrl;

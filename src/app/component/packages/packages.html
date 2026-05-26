@@ -6,12 +6,16 @@
     </div>
 
     <nav class="nav">
-      <a (click)="homePage()">יציאה מהמערכת</a>
+      <a (click)="homePage()">חזרה לדף הבית</a>
       @if(srv.curentcustomer.mail!=null){
       @if(srv.curentcustomer.mail=="meair@gmail.com"){
-      <a (click)="cust()">לקוחות</a> }
+      <a (click)="OrderManagement()">הזמנות קיימות במערכת</a>
+      <a (click)="cust()">לקוחות</a> 
+    }
       <a (click)="mypac()">חבילות</a>
+      @if(srv.curentcustomer.mail!="meair@gmail.com"){
       <a (click)="vieworders()">צפייה בנתונים</a>
+    }
       }
       <a (click)="recomms()">ממליצים</a>
       <a (click)="about()">אודות</a>
@@ -51,7 +55,7 @@
 <video controls>
   <source src="סרטים/1.mp4" type="video/mp4">
 </video> -->
-<div class="video-container">
+<!-- <div class="video-container">
   <video controls>
     <source src="סרטים/1.mp4" type="video/mp4">
     הדפדפן שלך אינו תומך בניגון וידאו.
@@ -62,7 +66,7 @@
     <source src="סרטים/2.mp4" type="video/mp4">
     הדפדפן שלך אינו תומך בניגון וידאו.
   </video>
-</div>
+</div> -->
 <div class="video-container">
   <video controls>
     <source src="סרטים/3.mp4" type="video/mp4">

@@ -13,6 +13,8 @@ import { AddPackage } from './component/add-package/add-package';
 import { Wellcome } from './component/wellcome/wellcome';
 import { About } from './component/about/about';
 import { PictureDetails } from './component/packages/picture-details/picture-details';
+import { OrderConfirmation } from './component/order-confirmation/order-confirmation';
+import { OrdersManagement } from './component/orders-management/orders-management';
 
 
 export const routes: Routes = [
@@ -30,8 +32,11 @@ export const routes: Routes = [
 { path: 'picturesDetails', component: PictureDetails },
 {path:'about',component:About},
 { path: '', component: Wellcome },
+{ path: 'orderConfirmation', component: OrderConfirmation },
+{ path: 'ordersManagement', component: OrdersManagement },
 
 
+    
 
 
 

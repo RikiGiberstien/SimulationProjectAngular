@@ -25,7 +25,7 @@
 <h2>פרויקטים בתהליך</h2>
 
       @for(l of srv.list3$ | async;track l;let ind=$index )
-      {
+      {@if(l.custId==this.custId){
       <div class="customer-card">
         <p>{{l.custName}} היקר/ה</p>
         <p>סוג החבילה: {{l.dealName}}</p>
@@ -46,33 +46,16 @@
       
         @if(isEdit && myorder.orderId === l.orderId && myorder.status === 'finish') {
 
-  <!-- <button>
-    פרסם לפרויקט
-  </button> -->
-
-<!-- <input type="file" (change)="onMainImageSelected($event)" />
-<button (click)="uploadMainImage()">Upload</button> -->
+  
 <input type="file" (change)="onMainImageSelected($event)" />
 
 <button (click)="uploadMainImage()">
   הפוך להזמנה לפרויקט
 </button>
-<!-- -----zv yuc -->
-<!-- <input type="file" multiple (change)="onGalleryFilesSelected($event)" />
-<button (click)="uploadGalleryImages()">Upload Gallery</button> -->
-  <!-- <button> -->
-    <!-- <button  (click)="save(l)">
-    פרסם ושמור
-  </button> -->
 
-  <!-- גלריה -->
-  <!-- <div class="gallery" *ngIf="showGallery"> -->
-<!-- 
-    <div class="img-box" *ngFor="let img of allimages">
-      <img [src]="img" (click)="chooseImage(img)" />
-    </div> -->
-
-  <!-- </div> -->
+<input type="file" multiple (change)="onGalleryFilesSelected($event)" />
+<button (click)="uploadGalleryImages()">Upload Gallery</button> 
+ 
 
 }
 
@@ -93,6 +76,7 @@
       </div>
 
       }
+    }
     </div>
   </div>
   <h2>פרויקטים גמורים</h2>

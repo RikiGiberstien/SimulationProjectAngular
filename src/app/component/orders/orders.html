@@ -28,19 +28,17 @@
             <div class="label-form"> התקציב שלך...:</div><label for="budget"> </label> <input id="budget" type="number"
                 [(ngModel)]="myorder.budget" required placeholder="התקציב שלך..." />
         </div>
-       <!--   <select>
-                    @for(l of listTypes;track l;){
-                    <option [(ngModel)]="model.customerType" value="l.customerTypeId">{{l.customerType}}</option>
-                    }
-                </select> -->
 
-     <select [(ngModel)]="myorder.viewPointId" name="viewPoint">
+        <div class="label-form">זווית ההדמיה</div>
+       
+     <select [(ngModel)]="myorder.viewPointId" name="viewPoint" aria-placeholder="זוית הדמיה">זוחת ההדמיה
   @for (s of listTypesOfillustration; track s.illustrationViewPointId) {
     <option [value]="s.illustrationViewPointId">
       {{ s.description }}
     </option>
   }
 </select></div>
+
   <!--  } -->
          <div class="form-footer"> <button type="button" class="btn gold" (click)="save()">שמור</button>
 

@@ -71,8 +71,10 @@ save() {
       
     }
   });
-      this.router.navigate(['/recommendations']);
+      this.router.navigate(['/orderConfirmation']);
 }
+
+
 }
 
 

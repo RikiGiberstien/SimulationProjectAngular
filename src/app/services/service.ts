@@ -220,6 +220,7 @@ this.list7$ = this.GetAllVidoes();
   // =========================
   // יצירת פרויקט חדש עם תמונה ראשית  
   // =========================
+  // zvvn
   uploadProject(file: File, custId: number, packageId: number, finalDate: any): Observable<any> {
 
   const formData = new FormData();
@@ -264,13 +265,13 @@ this.list7$ = this.GetAllVidoes();
     formData.append('projectId', projectId.toString());
 
     return this.http.post(
-      this.BASEURL + "Picture/upload-gallery",
+      this.BASEURL + "Picture/UploadGallery",
       formData
     );
   }
-}
 
 
+ }
 export interface AuthStatus {
   isAuthenticated: boolean;
 }

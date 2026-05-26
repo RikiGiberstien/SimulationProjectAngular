@@ -27,6 +27,9 @@ export class Packages {
   homePage() { this.router.navigate(['/homePage']) }
   mypac() { this.router.navigate(['/myPackages']) }
   cust() { this.router.navigate(['/customers']); }
+  OrderManagement() 
+  { this.router.navigate(['/ordersManagement']); }
+
 //   pictureDetails(i:number){
 //     this.curr.id=i
 //    this.router.navigate(['/pictureDetails',this.curr.id]);

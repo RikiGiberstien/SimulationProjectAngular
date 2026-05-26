@@ -1,0 +1,94 @@
+<div class="about-page">
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">Orders System</div>
+    </div>
+
+   
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>
+      ניהול <span>הזמנות</span>
+    </h1>
+
+    <p>מעקב אחר הזמנות לפי לקוחות, תאריכים וסטטוסים</p>
+  </section>
+
+  <!-- SEARCH + BUTTONS -->
+  <div class="cards">
+
+    <div class="card">
+
+      <h2>חיפוש</h2>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (input)="searchByCustomer()"
+        placeholder="שם לקוח..."
+      />
+
+    </div>
+
+    <div class="card">
+      <h2>מיון</h2>
+
+      <button (click)="sortByMeters()">מטרים</button>
+      <button (click)="sortByBudget()">תקציב</button>
+      <button (click)="sortByOrderDate()">תאריך הזמנה</button>
+      <button (click)="sortByFinishDate()">תאריך סיום</button>
+
+    </div>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="cards">
+
+    <div class="card" style="grid-column: 1 / -1">
+
+      <h2>רשימת הזמנות</h2>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>לקוח</th>
+            <th>תקציב</th>
+            <th>מטרים</th>
+            <th>תאריך הזמנה</th>
+            <th>תאריך סיום</th>
+          </tr>
+        </thead>
+
+        <tbody>
+<!--  [ngClass]="getRowClass(order)" -->
+          <tr
+            *ngFor="let order of filteredOrders"
+           
+          >
+
+            <td>{{ order.custName }}</td>
+            <td>{{ order.budget }}</td>
+            <td>{{ order.meters }}</td>
+            <td>{{ order.orderDate }}</td>
+            <td>{{ order.orderFinishDate }}</td>
+            <button (click)="viewCustomerDetails(order.custId)">פרטי לקוח</button>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

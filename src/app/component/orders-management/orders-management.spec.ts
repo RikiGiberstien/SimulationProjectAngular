@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Hash } from './hash';
+import { OrdersManagement } from './orders-management';
 
-describe('Hash', () => {
-  let component: Hash;
-  let fixture: ComponentFixture<Hash>;
+describe('OrdersManagement', () => {
+  let component: OrdersManagement;
+  let fixture: ComponentFixture<OrdersManagement>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Hash]
+      imports: [OrdersManagement]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Hash);
+    fixture = TestBed.createComponent(OrdersManagement);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

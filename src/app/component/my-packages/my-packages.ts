@@ -40,12 +40,15 @@ export class MyPackages implements OnInit{
   }
   vieworders() { this.router.navigate(['/vieworders']) }
   about() { this.router.navigate(['/about']) }
+  OrderManagement() 
+  { this.router.navigate(['/ordersManagement']); }
   mypackages() {
     this.router.navigate(['/orders']);
   }
   personalerea(dealId: number) {
     this.router.navigate(['/orders',dealId]);
   }
+  
   // משתמש בוחר Register או Login → הכפתור פעיל
   // onRegisterOrLoginClick() {
   //   this.disableOrderButton = false;
