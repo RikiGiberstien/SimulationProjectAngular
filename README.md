@@ -1,59 +1,72 @@
-# BlankApp
+# 3D Visualization Order Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+## Overview
 
-## Development server
+A web application for managing 3D visualization orders, designed to support both customers and administrators throughout the order process.
 
-To start a local development server, run:
+The system allows customers to submit orders, track their status, explore completed projects, and share feedback. Administrators can manage orders, update statuses, and publish completed projects with images.
+
+## Key Features
+
+- **Order Management:** Customers can submit visualization orders, while administrators manage incoming requests.
+- **Order Status Tracking:** Customers can follow the progress of their orders.
+- **Email Notifications:** Administrators receive email notifications when a new order is submitted.
+- **Project Gallery:** Visitors can explore previously completed visualization projects.
+- **Project Publishing:** Completed projects can be published with images.
+- **Customer Reviews:** Customers can share recommendations and feedback about their experience.
+- **Website Chatbot:** An integrated chatbot answers questions about the website and helps visitors find information.
+
+## Technologies
+
+- Angular
+- TypeScript
+- SCSS
+
+## Application Workflow
+
+1. A customer submits a new visualization order.
+2. The administrator receives an email notification.
+3. The administrator reviews the order and updates its status.
+4. The customer can track the order's progress.
+5. Once a project is completed, it can be published in the project gallery with images.
+6. Customers can submit feedback about their experience.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+- Angular CLI, if required by the project
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/RikiGiberstien/SimulationProjectAngular.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd SimulationProjectAngular
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+## Project Goal
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The goal of this project is to provide a convenient platform for managing visualization orders, communicating with customers, and showcasing completed work in an organized gallery.
